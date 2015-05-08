@@ -1,0 +1,64 @@
+{
+  "name": "narrowspark-rising",
+  "version": "0.0.11",
+  "description": "Beautiful Grunt task for zero",
+  "author": {
+    "name": "Daniel Bannert",
+    "email": "info@anolilab.de"
+  },
+  "homepage": "https://github.com/narrowspark/rising",
+  "main": "rising.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/narrowspark/rising.git"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev:test": "grunt dev:test --verbose"
+  },
+  "bugs": {
+    "url": "https://github.com/narrowspark/rising/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://narrowspark.de/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-debug-task": "^0.1.5",
+    "grunt-newer": "^1.1.0",
+    "jit-grunt": "^0.9.1",
+    "jshint-stylish": "*",
+    "load-grunt-config": "^0.16.0",
+    "time-grunt": "^1.1.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bump": "^0.3.0",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-jsonlint": "^1.0.4",
+    "grunt-jsvalidate": "^0.2.2",
+    "jshint-stylish": "^1.0.1",
+    "jsvalidate": "^0.5.5"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4.5"
+  },
+  "keywords": [
+    "zero",
+    "grunt",
+    "bower",
+    "rising"
+  ]
+}

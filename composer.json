@@ -1,0 +1,47 @@
+{
+    "name"       : "gwa/zero",
+    "type"       : "wordpress-theme",
+    "description": "WordPress Starter Theme with Twig for use as a starting template for building custom themes.",
+    "keywords"   : ["roots", "wordpress", "composer", "wp", "twig"],
+    "license"    : "MIT",
+    "homepage"   : "https://github.com/gwa/zero",
+    "support"    : {
+        "issues": "https://github.com/gwa/zero/issues",
+        "source": "https://github.com/gwa/zero"
+    },
+    "authors"    : [
+        {
+          "name"    : "Great White Ark",
+          "homepage": "http://www.greatwhiteark.com"
+        }
+    ],
+    "require": {
+        "php"                           : ">=5.4.0",
+        "jarednova/timber"              : "dev-master"
+    },
+    "require-dev": {
+        "fabpot/php-cs-fixer"           : "~1.8",
+        "sensiolabs/security-checker"   : "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gwa\\Wordpress\\Template\\": "src/"
+        }
+    },
+    "repositories": [{
+        "type"         : "package",
+        "package": {
+            "name"     : "jarednova/php-router",
+            "version"  : "1.0.1",
+            "dist": {
+                "url"  : "https://github.com/jarednova/PHP-Router/archive/fix_psr_0.zip",
+                "type" : "zip"
+            },
+            "autoload": {
+                "psr-0": {
+                    "PHPRouter": "src/"
+                }
+            }
+        }
+    }]
+}
