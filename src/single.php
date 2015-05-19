@@ -1,22 +1,16 @@
 <?php
+
 /**
- * The Template for displaying all single posts
+ * Zero - a PHP 5.4 Wordpress Theme.
  *
- * Methods for TimberHelper can be found in the /lib sub-directory
+ * @author      Daniel Bannert <bannert@greatwhiteark.com>
+ * @copyright   2015 Great White Ark
  *
- * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
+ * @link        http://www.greatwhiteark.com
+ *
+ * @license     MIT
  */
 
-$context = Timber::get_context();
-$post = Timber::query_post();
-$context['post'] = $post;
-$context['wp_title'] .= ' - ' . $post->title();
-$context['comment_form'] = TimberHelper::get_comment_form();
+use Gwa\Wordpress\Template\Zero\Library\Controller\Single;
 
-if ( post_password_required( $post->ID ) ) {
-    Timber::render( 'single-password.twig', $context );
-} else {
-    Timber::render( array( 'single-' . $post->ID . '.twig', 'single-' . $post->post_type . '.twig', 'single.twig' ), $context );
-}
+(new Single())->render();

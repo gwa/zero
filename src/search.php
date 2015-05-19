@@ -1,18 +1,16 @@
 <?php
+
 /**
- * Search results page
+ * Zero - a PHP 5.4 Wordpress Theme.
  *
- * Methods for TimberHelper can be found in the /lib sub-directory
+ * @author      Daniel Bannert <bannert@greatwhiteark.com>
+ * @copyright   2015 Great White Ark
  *
- * @package  WordPress
- * @subpackage  Timber
- * @since   Timber 0.1
+ * @link        http://www.greatwhiteark.com
+ *
+ * @license     MIT
  */
 
-$templates = array( 'search.twig', 'archive.twig', 'index.twig' );
-$context = Timber::get_context();
+use Gwa\Wordpress\Template\Zero\Library\Controller\Search;
 
-$context['title'] = 'Search results for '. get_search_query();
-$context['posts'] = Timber::get_posts();
-
-Timber::render( $templates, $context );
+(new Search())->render();

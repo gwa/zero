@@ -13,10 +13,11 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
  * @license     MIT
  */
 
+use TimberUser;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
 /**
- * Archive.
+ * Author.
  *
  * @author  Daniel Bannert
  *
@@ -28,6 +29,26 @@ class Author extends AbstractController
     {
         parent::__construct();
 
-        $this->setTemplate(['author.twig']);
+        $this->setContext($this->authorData());
+
+        $this->setTemplate(['author.twig', 'archive.twig']);
+    }
+
+    /**
+     * Needed author data
+     *
+     * @return array
+     */
+    protected function authorData()
+    {
+        global $wp_query;
+
+        if (isset($wp_query->query_vars['author'])) {
+            $author = new TimberUser($wp_query->query_vars['author']);
+            $data['author'] = $author;
+            $data['title']  = 'Author Archives: '.$author->name();
+        }
+
+        return $data;
     }
 }

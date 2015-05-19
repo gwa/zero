@@ -16,7 +16,7 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
 /**
- * Archive.
+ * Search.
  *
  * @author  Daniel Bannert
  *
@@ -28,6 +28,10 @@ class Search extends AbstractController
     {
         parent::__construct();
 
-        $this->setTemplate(['search.twig']);
+        $this->setContext([
+            'title' => 'Search results for '.get_search_query()
+        ]);
+
+        $this->setTemplate(['search.twig', 'archive.twig', 'index.twig']);
     }
 }

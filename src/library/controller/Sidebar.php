@@ -16,7 +16,7 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
 /**
- * Archive.
+ * Sidebar.
  *
  * @author  Daniel Bannert
  *
@@ -24,10 +24,24 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  */
 class Sidebar extends AbstractController
 {
+    /**
+     * Add posts to context
+     *
+     * @var boolean
+     */
+    protected $activePosts   = false;
+
+    /**
+     * Add post to context
+     *
+     * @var boolean
+     */
+    protected $activePost    = false;
+
     public function __construct()
     {
         parent::__construct();
 
-        $this->setTemplate(['search.twig']);
+        $this->setTemplate(['sidebar.twig']);
     }
 }

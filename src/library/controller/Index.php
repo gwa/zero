@@ -16,7 +16,7 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
 /**
- * Archive.
+ * Index.
  *
  * @author  Daniel Bannert
  *
@@ -29,9 +29,11 @@ class Index extends AbstractController
         parent::__construct();
 
         if (is_home()) {
-            $this->setTemplate(['home.twig']);
+            $templates = ['home.twig'];
         } else {
-            $this->setTemplate(['index.twig']);
+            $templates = ['index.twig'];
         }
+
+         $this->setTemplate($templates)
     }
 }

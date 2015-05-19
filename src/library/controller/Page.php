@@ -16,7 +16,7 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
 /**
- * Archive.
+ * Page.
  *
  * @author  Daniel Bannert
  *
@@ -24,13 +24,24 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  */
 class Page extends AbstractController
 {
+    /**
+     * Add posts to context
+     *
+     * @var boolean
+     */
+    protected $activePosts   = false;
+
+    /**
+     * Add post to context
+     *
+     * @var boolean
+     */
+    protected $activePost    = true;
+
     public function __construct()
     {
         parent::__construct();
 
-        $this->addPostsToContext(false);
-        $this->addPostToContext(true);
-
-        $this->setTemplate(['page-' . $this->getContext('post')->post_name . '.twig', 'page.twig']);
+        $this->setTemplate(['page-'.$this->getContext('post')->post_name.'.twig', 'page.twig']);
     }
 }

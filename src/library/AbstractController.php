@@ -16,7 +16,7 @@ namespace Gwa\Wordpress\Template\Zero\Library;
 use Timber;
 use TimberLoader;
 use RuntimeException;
-use Gwa\Wordpress\Template\Zero\Library\Zero\Post;
+use Gwa\Wordpress\Template\Zero\Library\Timber\Post;
 
 /**
  * AbstractController.
@@ -40,7 +40,7 @@ abstract class AbstractController
      *
      * @var array
      */
-    protected $templates = [];
+    protected $templates     = [];
 
     /**
      * File context
@@ -55,6 +55,13 @@ abstract class AbstractController
      * @var boolean
      */
     protected $activePosts   = true;
+
+    /**
+     * Add post to context
+     *
+     * @var boolean
+     */
+    protected $activePost    = true;
 
     /**
      * Posts args
@@ -75,14 +82,14 @@ abstract class AbstractController
      *
      * @var array
      */
-    protected $postArgs     = [];
+    protected $postArgs      = [];
 
     /**
      * Cache expires time
      *
      * @var bool|int
      */
-    protected $cacheExpires = false;
+    protected $cacheExpires  = false;
 
     /**
      * Cache mode.
@@ -123,8 +130,8 @@ abstract class AbstractController
      */
     public function addPostToContext($active = true, $args = false)
     {
-        $this->activePosts = $active;
-        $this->postsArgs   = $args;
+        $this->activePost = $active;
+        $this->postsArgs  = $args;
 
         return $this;
     }

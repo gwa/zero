@@ -28,6 +28,41 @@ class Archive extends AbstractController
     {
         parent::__construct();
 
-        $this->setTemplate(['archive.twig']);
+        $data = $this->archiveData(['archive.twig', 'index.twig']);
+
+        $this->setContext($data['data']);
+
+        $this->setTemplate($data['templates']);
+    }
+
+    /**
+     * Needed archive title
+     *
+     * @return array
+     */
+    protected function archiveData(array $templates)
+    {
+        $data['title']     = 'Archive';
+
+        if (is_day()) {
+            $data['title'] = 'Archive: '.get_the_date('D M Y');
+        } elseif (is_month()) {
+            $data['title'] = 'Archive: '.get_the_date('M Y');
+        } elseif (is_year()) {
+            $data['title'] = 'Archive: '.get_the_date('Y');
+        } elseif (is_tag()) {
+            $data['title'] = single_tag_title('', false);
+        } elseif (is_category()) {
+            $data['title'] = single_cat_title('', false);
+            array_unshift($templates, 'archive-'.get_query_var('cat').'.twig');
+        } elseif (is_post_type_archive()) {
+            $data['title'] = post_type_archive_title('', false);
+            array_unshift($templates, 'archive-'.get_post_type().'.twig');
+        }
+
+        return [
+            'data'      => $data,
+            'templates' => $templates
+        ];
     }
 }

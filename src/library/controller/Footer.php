@@ -28,12 +28,28 @@ class Home extends AbstractController
     {
         parent::__construct();
 
-        if (is_home()) {
-            $templates = ['home.twig'];
-        } else {
-            $templates = ['index.twig'];
+        $this->setContext($this->footerData());
+
+        $this->setTemplate(['page-plugin.twig']);
+    }
+
+    /**
+     * Needed footer data
+     *
+     * @param WP_Post $post
+     *
+     * @return array
+     */
+    protected function footerData()
+    {
+        $data = $GLOBALS['timberContext'];
+
+        if (!isset($data)) {
+            throw new \Exception('Timber context not set in footer.');
         }
 
-         $this->setTemplate($templates)
+        $data['content'] = ob_get_contents();
+
+        return $data;
     }
 }

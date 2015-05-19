@@ -13,10 +13,11 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
  * @license     MIT
  */
 
+use TimberHelper;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
 /**
- * Archive.
+ * Single.
  *
  * @author  Daniel Bannert
  *
@@ -24,10 +25,50 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  */
 class Single extends AbstractController
 {
+    /**
+     * Add posts to context
+     *
+     * @var boolean
+     */
+    protected $activePosts   = false;
+
+    /**
+     * Add post to context
+     *
+     * @var boolean
+     */
+    protected $activePost    = true;
+
     public function __construct()
     {
         parent::__construct();
 
-        $this->setTemplate(['single.twig']);
+        $post = $this->getContext('post');
+
+        $this->setContext($this->singleData($post));
+
+        if (post_password_required($post->ID)) {
+            $template = ['single-password.twig'];
+        } else {
+            $template = ['single-'.$post->ID.'.twig', 'single-'.$post->post_type.'.twig', 'single.twig')];
+        }
+
+        $this->setTemplate($template);
+    }
+
+    /**
+     * Needed single data
+     *
+     * @param WP_Post $post
+     *
+     * @return array
+     */
+    protected function singleData($post)
+    {
+        $data['post']         = $post;
+        $data['wp_title']    .= ' - ' . $post->title();
+        $data['comment_form'] = TimberHelper::get_comment_form();
+
+        return $data;
     }
 }

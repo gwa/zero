@@ -1,10 +1,16 @@
 <?php
+
 /**
- * The Template for displaying all single posts
+ * Zero - a PHP 5.4 Wordpress Theme.
  *
+ * @author      Daniel Bannert <bannert@greatwhiteark.com>
+ * @copyright   2015 Great White Ark
  *
- * @package  WordPress
- * @subpackage  Timber
+ * @link        http://www.greatwhiteark.com
+ *
+ * @license     MIT
  */
 
-Timber::render( array( 'sidebar.twig' ), $data );
+use Gwa\Wordpress\Template\Zero\Library\Controller\Sidebar;
+
+(new Sidebar())->render();
