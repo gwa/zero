@@ -1,2 +1,2 @@
-# zero
-WordPress Starter Theme for use as a starting template for building custom themes. Uses Twig, PSR-2, SCSS, Normalize
+# timber-starter-theme
+The "_s" for Timber: a dead-simple theme that you can build from
