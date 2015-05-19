@@ -2,77 +2,56 @@
 
 include_once get_template_directory().'/../vendor/autoload.php';
 
-use Gwa\Wordpress\Template\Tgm\ZeroTgmSetup;
+/**
+ * Zero - a PHP 5.4 Wordpress Theme.
+ *
+ * @author      Daniel Bannert <bannert@greatwhiteark.com>
+ * @copyright   2015 Great White Ark
+ *
+ * @link        http://www.greatwhiteark.com
+ *
+ * @license     MIT
+ */
 
+use Gwa\Wordpress\Template\Zero\Tgm\ZeroTgmSetup;
+use Gwa\Wordpress\Template\Zero\Library\Soil\RootsSoil;
+use  Gwa\Wordpress\Template\Zero\Library\Theme\ThemeSettings;
+
+/**
+ * Add needed theme plugins
+ *
+ * @var ZeroTgmSetup
+ */
 $tgm = new ZeroTgmSetup();
-
-$tgm->setPlugin([
-    [
-        'name'      => 'timber-library',
-        'slug'      => 'timber-library',
-        'required'  => false,
-    ],
-    [
-        'name'               => 'Timber clear cache', // The plugin name.
-        'slug'               => 'timber-clear-cache', // The plugin slug (typically the folder name).
-        'source'             => 'https://github.com/ogrosko/timber-clear-cache/archive/master.zip', // The plugin source.
-        'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-        'external_url'       => 'https://github.com/ogrosko/timber-clear-cache', // If set, overrides default API URL and points to an external URL.
-    ],
-]);
 
 add_action('tgmpa_register', [$tgm, 'init']);
 
+
+/**
+ * Check if Timber is active.
+ */
 if (!class_exists('Timber')) {
     add_action('admin_notices', function() {
-            echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url('plugins.php#timber' ) ) . '">' . esc_url( admin_url('plugins.php' ) ) . '</a></p></div>';
-        });
+        echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url('plugins.php#timber' ) ) . '">plugins page</a></p></div>';
+    });
+
     return;
 }
 
+/**
+ * Adds roots soil support to zero
+ *
+ * @link https://github.com/roots/soil
+ */
+if (class_exists('Roots\Soil\Options')) {
+    $soil = new RootsSoil();
 
-class StarterSite extends \TimberSite {
-
-    function __construct() {
-        add_theme_support('post-formats');
-        add_theme_support('post-thumbnails');
-        add_theme_support('menus' );
-        add_filter('timber_context', array( $this, 'add_to_context'));
-        add_filter('get_twig', array( $this, 'add_to_twig'));
-        add_action('init', array( $this, 'register_post_types' ) );
-        add_action('init', array( $this, 'register_taxonomies' ) );
-        parent::__construct();
-    }
-
-    function register_post_types() {
-        //this is where you can register custom post types
-    }
-
-    function register_taxonomies() {
-        //this is where you can register custom taxonomies
-    }
-
-    function add_to_context( $context ) {
-        $context['foo'] = 'bar';
-        $context['stuff'] = 'I am a value set in your functions.php file';
-        $context['notes'] = 'These values are available everytime you call Timber::get_context();';
-        $context['menu'] = new \TimberMenu();
-        $context['site'] = $this;
-        return $context;
-    }
-
-    function add_to_twig( $twig ) {
-        /* this is where you can add your own fuctions to twig */
-        $twig->addExtension( new \Twig_Extension_StringLoader() );
-        $twig->addFilter('myfoo', new \Twig_Filter_Function('myfoo' ) );
-        return $twig;
-    }
-
+    $soil->init();
 }
 
-new \StarterSite();
+/**
+ * Adds all global needed theme settings
+ */
+$theme = new ThemeSettings();
 
-function myfoo( $text ) {
-    $text .= ' bar!';
-    return $text;
-}
+$theme->init();

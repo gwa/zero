@@ -1,13 +1,16 @@
 <?php
+
 /**
- * The template for displaying 404 pages (Not Found)
+ * Zero - a PHP 5.4 Wordpress Theme.
  *
- * Methods for TimberHelper can be found in the /functions sub-directory
+ * @author      Daniel Bannert <bannert@greatwhiteark.com>
+ * @copyright   2015 Great White Ark
  *
- * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
+ * @link        http://www.greatwhiteark.com
+ *
+ * @license     MIT
  */
 
-$context = Timber::get_context();
-Timber::render( '404.twig', $context );
+use Gwa\Wordpress\Template\Zero\Library\Controller\Error404;
+
+(new Error404())->render();

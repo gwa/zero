@@ -1,4 +1,7 @@
 <?php
+
+namespace Gwa\Wordpress\Template\Zero\Tgm;
+
 /**
  * Plugin installation and activation for WordPress themes.
  *
@@ -1079,7 +1082,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
      * @author  Thomas Griffin <thomas@thomasgriffinmedia.com>
      * @author  Gary Jones <gamajo@gamajo.com>
      */
-    class TGMPA_List_Table extends WP_List_Table {
+    class TGMPA_List_Table extends \WP_List_Table {
 
         /**
          * References parent constructor and sets defaults for class.
@@ -1703,7 +1706,7 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
             /**
              * Installer class to handle bulk plugin installations.
              *
-             * Extends WP_Upgrader and customizes to suit the installation of multiple
+             * Extends \WP_Upgrader and customizes to suit the installation of multiple
              * plugins.
              *
              * @since 2.2.0
@@ -1712,7 +1715,7 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
              * @author  Thomas Griffin <thomasgriffinmedia.com>
              * @author  Gary Jones <gamajo.com>
              */
-            class TGM_Bulk_Installer extends WP_Upgrader {
+            class TGM_Bulk_Installer extends \WP_Upgrader {
 
                 /**
                  * Holds result of bulk plugin installation.
