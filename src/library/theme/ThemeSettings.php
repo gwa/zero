@@ -32,7 +32,8 @@ class ThemeSettings extends TimberSite
      *
      * @return array
      */
-    public function addToContext($context) {
+    public function addToContext($context)
+    {
         $context['header-menu'] = new TimberMenu('header-menu');
         $context['footer-menu'] = new TimberMenu('footer-menu');
 
