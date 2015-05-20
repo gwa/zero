@@ -40,7 +40,7 @@ final class Search extends AbstractController
     /**
      * Get templates
      *
-     * @return array
+     * @return string[]
      */
     public function getTemplates()
     {

@@ -103,7 +103,7 @@ abstract class AbstractController implements PageControllerContract
      */
     public function getPost(array $args = null)
     {
-        return Timber::get_post(($args !== null)?:false, new Post());
+        return Timber::get_post(($args !== null) ?: false, new Post());
     }
 
     /**
@@ -115,7 +115,7 @@ abstract class AbstractController implements PageControllerContract
      */
     public function getPosts(array $args = null)
     {
-        return Timber::get_posts(($args !== null)?:false, new Post());
+        return Timber::get_posts(($args !== null) ?: false, new Post());
     }
 
     /**

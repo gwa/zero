@@ -55,7 +55,7 @@ final class Archive extends AbstractController
         return $data;
     }
 
-   /**
+    /**
      * Get templates
      *
      * @return array

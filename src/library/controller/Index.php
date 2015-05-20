@@ -37,7 +37,7 @@ final class Index extends AbstractController
     /**
      * Get templates
      *
-     * @return array
+     * @return string[]
      */
     public function getTemplates()
     {
