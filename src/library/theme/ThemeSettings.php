@@ -60,8 +60,8 @@ class ThemeSettings extends TimberSite
     {
         register_nav_menus(
             [
-              'header-menu' => __('Header Menu', 'zero'),
-              'footer-menu' => __('Footer Menu', 'zero')
+                'header-menu' => __('Header Menu', 'zero'),
+                'footer-menu' => __('Footer Menu', 'zero')
             ]
         );
     }

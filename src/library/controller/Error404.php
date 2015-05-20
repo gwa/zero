@@ -32,7 +32,7 @@ final class Error404 extends AbstractController
         return ['posts' => $this->getPosts()];
     }
 
-   /**
+    /**
      * {@inheritdoc}
      */
     public function getTemplates()

@@ -53,7 +53,7 @@ final class Archive extends AbstractController
         return $data;
     }
 
-   /**
+    /**
      * {@inheritdoc}
      */
     public function getTemplates()

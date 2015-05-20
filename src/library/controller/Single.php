@@ -40,7 +40,7 @@ final class Single extends AbstractController
         return $data;
     }
 
-   /**
+    /**
      * {@inheritdoc}
      */
     public function getTemplates()
