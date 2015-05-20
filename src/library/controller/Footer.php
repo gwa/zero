@@ -36,9 +36,7 @@ final class Footer extends AbstractController
     /**
      * Needed footer data
      *
-     * @param WP_Post $post
-     *
-     * @return array
+     * @return array<string,string>
      */
     protected function footerData()
     {

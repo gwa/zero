@@ -44,6 +44,8 @@ final class Author extends AbstractController
     {
         global $wp_query;
 
+        $data = [];
+
         if (isset($wp_query->query_vars['author'])) {
             $author = new TimberUser($wp_query->query_vars['author']);
             $data['author'] = $author;

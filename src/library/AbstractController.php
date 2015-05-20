@@ -66,16 +66,16 @@ abstract class AbstractController
     /**
      * Posts args
      *
-     * @var array
+     * @var array|boolean
      */
     protected $postsArgs = false;
 
     /**
      * Posts args
      *
-     * @var array
+     * @var array|boolean
      */
-    protected $postArgs = [];
+    protected $postArgs = false;
 
     /**
      * Cache expires time
@@ -97,7 +97,9 @@ abstract class AbstractController
     public function __construct()
     {
         if (!class_exists('Timber')) {
-            throw new RuntimeException('Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>');
+            throw new RuntimeException(
+                'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>'
+            );
         }
     }
 
@@ -105,8 +107,11 @@ abstract class AbstractController
      * Add posts to context
      *
      * @param boolean $active
+     * @param array|boolean $paramname description
+     *
+     * @return self
      */
-    public function addPostsToContext($active = true, $args = false)
+    public function addPostsToContext($active = true, array $args = false)
     {
         $this->activePosts = $active;
         $this->postsArgs   = $args;
@@ -120,11 +125,14 @@ abstract class AbstractController
      * Works the same as AbstractController::addPostsToContext but limited to one post as the return object.
      *
      * @param boolean $active
+     * @param array|boolean $paramname description
+     *
+     * @return self
      */
-    public function addPostToContext($active = true, $args = false)
+    public function addPostToContext($active = true, array $args = false)
     {
         $this->activePost = $active;
-        $this->postsArgs  = $args;
+        $this->postArgs  = $args;
 
         return $this;
     }
@@ -150,7 +158,7 @@ abstract class AbstractController
     /**
      * Get context
      *
-     * @param string $key
+     * @param false|string $key
      *
      * @return array
      */
@@ -176,7 +184,7 @@ abstract class AbstractController
     /**
      * Set template
      *
-     * @param string|array $template
+     * @param array $templates
      *
      * @return self
      */
@@ -202,7 +210,7 @@ abstract class AbstractController
     /**
     *  Render template
     *
-     * @return bool|string
+     * @return boolean|string|null
      */
     public function render()
     {
@@ -212,7 +220,7 @@ abstract class AbstractController
     /**
      * Check if file exist
      *
-     * @param  string $template
+     * @param array $templates
      *
      * @return string
      */

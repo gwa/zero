@@ -28,11 +28,9 @@ final class Archive extends AbstractController
     {
         parent::__construct();
 
-        $data = $this->archiveData(['archive.twig', 'index.twig']);
+        $this->setContext($this->archiveData());
 
-        $this->setContext($data['data']);
-
-        $this->setTemplate($thsi->templateToRender());
+        $this->setTemplate($this->templateToRender());
     }
 
     /**
@@ -42,6 +40,8 @@ final class Archive extends AbstractController
      */
     protected function archiveData()
     {
+        $data = [];
+
         $data['title']     = 'Archive';
 
         if (is_day()) {

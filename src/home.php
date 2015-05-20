@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Library\Controller\Home;
+use Gwa\Wordpress\Template\Zero\Library\Controller\Home as HomePage;
 
-(new Home())->render();
+(new HomePage())->render();

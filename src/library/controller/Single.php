@@ -13,8 +13,8 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
  * @license     MIT
  */
 
-use TimberHelper;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
+use TimberHelper;
 
 /**
  * Single.
@@ -68,6 +68,6 @@ final class Single extends AbstractController
             return ['single-password.twig'];
         }
 
-        return ['single-'.$post->ID.'.twig', 'single-'.$post->post_type.'.twig', 'single.twig')];
+        return ['single-'.$post->ID.'.twig', 'single-'.$post->post_type.'.twig', 'single.twig'];
     }
 }

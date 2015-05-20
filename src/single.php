@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Library\Controller\Single;
+use Gwa\Wordpress\Template\Zero\Library\Controller\Single as SinglePage;
 
-(new Single())->render();
+(new SinglePage())->render();

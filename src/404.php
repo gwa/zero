@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Library\Controller\Error404;
+use Gwa\Wordpress\Template\Zero\Library\Controller\Error404 as Error404Page;
 
-(new Error404())->render();
+(new Error404Page())->render();
