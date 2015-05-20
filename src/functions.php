@@ -31,8 +31,8 @@ add_action('tgmpa_register', [$tgm, 'init']);
  * Check if Timber is active.
  */
 if (!class_exists('Timber')) {
-    add_action('admin_notices', function () {
-        echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url(admin_url('plugins.php#timber')) . '">plugins page</a></p></div>';
+    add_action('admin_notices', function() {
+        echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="'.esc_url(admin_url('plugins.php#timber')).'">plugins page</a></p></div>';
     });
 
     return;
