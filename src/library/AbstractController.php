@@ -14,6 +14,7 @@ namespace Gwa\Wordpress\Template\Zero\Library;
  */
 
 use Gwa\Wordpress\Template\Zero\Library\Timber\Post;
+use LogicException;
 use RuntimeException;
 use Timber;
 use TimberLoader;
@@ -25,57 +26,15 @@ use TimberLoader;
  *
  * @since   0.0.1-dev
  */
-abstract class AbstractController
+abstract class AbstractController implements PageControllerContract
 {
     protected $cacheType = [
         'none'           => TimberLoader::CACHE_NONE,
         'object'         => TimberLoader::CACHE_OBJECT,
-        'transiete'      => TimberLoader::CACHE_TRANSIENT,
-        'site.transiete' => TimberLoader::CACHE_SITE_TRANSIENT,
+        'transient'      => TimberLoader::CACHE_TRANSIENT,
+        'site.transient' => TimberLoader::CACHE_SITE_TRANSIENT,
         'default'        => TimberLoader::CACHE_USE_DEFAULT,
     ];
-
-    /**
-     * Template Name
-     *
-     * @var array
-     */
-    protected $templates = [];
-
-    /**
-     * File context
-     *
-     * @var array
-     */
-    protected $context = [];
-
-    /**
-     * Add posts to context
-     *
-     * @var boolean
-     */
-    protected $activePosts = true;
-
-    /**
-     * Add post to context
-     *
-     * @var boolean
-     */
-    protected $activePost = false;
-
-    /**
-     * Posts args
-     *
-     * @var array|boolean
-     */
-    protected $postsArgs = false;
-
-    /**
-     * Posts args
-     *
-     * @var array|boolean
-     */
-    protected $postArgs = false;
 
     /**
      * Cache expires time
@@ -104,53 +63,17 @@ abstract class AbstractController
     }
 
     /**
-     * Add posts to context
+     * Init Cache
      *
-     * @param boolean $active
-     * @param array|boolean $paramname description
-     *
-     * @return self
-     */
-    public function addPostsToContext($active = true, array $args = false)
-    {
-        $this->activePosts = $active;
-        $this->postsArgs   = $args;
-
-        return $this;
-    }
-
-    /**
-     * Add post to context
-     *
-     * Works the same as AbstractController::addPostsToContext but limited to one post as the return object.
-     *
-     * @param boolean $active
-     * @param array|boolean $paramname description
+     * @param boolean $expires
+     * @param string  $mode
      *
      * @return self
      */
-    public function addPostToContext($active = true, array $args = false)
-    {
-        $this->activePost = $active;
-        $this->postArgs  = $args;
-
-        return $this;
-    }
-
-    public function setCache($expires = false, $mode = 'default')
+    public function initCache($expires = false, $mode = 'default')
     {
         $this->cacheExpires = $expires;
         $this->cacheMode    = $this->cacheType[$mode];
-    }
-
-    /**
-     * Set context for template
-     *
-     * @return self
-     */
-    public function setContext(array $context)
-    {
-        $this->context = $context;
 
         return $this;
     }
@@ -158,53 +81,41 @@ abstract class AbstractController
     /**
      * Get context
      *
-     * @param false|string $key
-     *
      * @return array
      */
-    public function getContext($key = false)
-    {
-        $context = Timber::get_context();
-
-        if ($this->activePosts) {
-            $context['posts'] = Timber::get_posts($this->postsArgs, new Post());
-        } elseif ($this->activePost) {
-            $context['post']  = Timber::get_post($this->postsArgs, new Post());
-        }
-
-        $data = array_merge($context, $this->context);
-
-        if ($key) {
-            return $data[$key];
-        }
-
-        return $data;
-    }
-
-    /**
-     * Set template
-     *
-     * @param array $templates
-     *
-     * @return self
-     */
-    public function setTemplate(array $templates)
-    {
-        $templates       = $this->checkIfTemplateExist($templates);
-
-        $this->templates = $templates;
-
-        return $this;
-    }
+    abstract public function getContext();
 
     /**
      * Get template
      *
      * @return array
      */
-    public function getTemplates()
+    abstract public function getTemplates();
+
+    /**
+     * Get Post
+     *
+     * Works the same as AbstractController::addPostsToContext but limited to one post as the return object.
+     *
+     * @param array|boolean $args
+     *
+     * @return \Timber
+     */
+    public function getPost(array $args = null)
     {
-        return $this->templates;
+        return Timber::get_post(($args !== null)?:false, new Post());
+    }
+
+    /**
+     * Get Posts
+     *
+     * @param array|boolean $args
+     *
+     * @return \Timber
+     */
+    public function getPosts(array $args = null)
+    {
+        return Timber::get_posts(($args !== null)?:false, new Post());
     }
 
     /**
@@ -214,24 +125,44 @@ abstract class AbstractController
      */
     public function render()
     {
-        Timber::render($this->getTemplates(), $this->getContext(), $this->cacheExpires, $this->cacheMode);
+        $this->validateTemplates($this->getTemplates());
+        $this->validateContext($this->getContext());
+
+        Timber::render(
+            $this->getTemplates(),
+            array_merge(Timber::get_context(), $this->getContext()),
+            $this->cacheExpires,
+            $this->cacheMode
+        );
     }
 
     /**
-     * Check if file exist
+     * Check if context is a array
+     *
+     * @param array $context
+     */
+    protected function validateContext($context)
+    {
+        if (!is_array($context)) {
+            throw new LogicException('::getContext should return a array');
+        }
+    }
+
+    /**
+     * Check if getTemplates is a array and template file exist
      *
      * @param array $templates
-     *
-     * @return string
      */
-    protected function checkIfTemplateExist($templates)
+    protected function validateTemplates($templates)
     {
-        foreach ($templates as $template) {
-            if (!is_file(get_template_directory().'/views/'.$template)) {
-                return 'error-template.twig';
-            }
+        if (!is_array($templates)) {
+            throw new LogicException('::getTemplates should return a array');
         }
 
-        return $templates;
+        // foreach ($templates as $template) {
+        //     if (!is_file(get_template_directory().'/views/'.$template)) {
+        //         throw new LogicException(sprintf('Template [%s] dont exists.', $template));
+        //     }
+        // }
     }
 }

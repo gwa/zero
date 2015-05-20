@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwa\Wordpress\Template\Zero\Library\Controller;
+namespace Gwa\Wordpress\Template\Zero\Library;
 
 /**
  * Zero - a PHP 5.4 Wordpress Theme.
@@ -13,33 +13,26 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Library\AbstractController;
-
 /**
- * Sidebar.
+ * PageControllerContract.
  *
  * @author  Daniel Bannert
  *
  * @since   0.0.1-dev
  */
-final class Sidebar extends AbstractController
+interface PageControllerContract
 {
     /**
      * Get context
      *
      * @return array
      */
-    public function getContext()
-    {
-    }
+    public function getContext();
 
     /**
-     * Get templates
+     * Get template
      *
      * @return array
      */
-    public function getTemplates()
-    {
-        return ['sidebar.twig'];
-    }
+    public function getTemplates();
 }

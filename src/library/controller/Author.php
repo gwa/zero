@@ -26,21 +26,12 @@ use TimberUser;
  */
 final class Author extends AbstractController
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->setContext($this->authorData());
-
-        $this->setTemplate(['author.twig', 'archive.twig']);
-    }
-
     /**
-     * Needed author data
+     * Get context
      *
      * @return array
      */
-    protected function authorData()
+    public function getContext()
     {
         global $wp_query;
 
@@ -53,7 +44,18 @@ final class Author extends AbstractController
         }
 
         $data['pagination'] = Timber::get_pagination();
+        $data['posts']      = $this->getPosts();
 
         return $data;
+    }
+
+    /**
+     * Get templates
+     *
+     * @return array
+     */
+    public function getTemplates()
+    {
+        return ['author.twig', 'archive.twig'];
     }
 }

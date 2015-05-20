@@ -24,14 +24,26 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  */
 final class Search extends AbstractController
 {
-    public function __construct()
+    /**
+     * Get context
+     *
+     * @return array
+     */
+    public function getContext()
     {
-        parent::__construct();
-
-        $this->setContext([
+        return [
+            'posts' => $this->getPosts(),
             'title' => 'Search results for '.get_search_query()
-        ]);
+        ];
+    }
 
-        $this->setTemplate(['search.twig', 'archive.twig', 'index.twig']);
+    /**
+     * Get templates
+     *
+     * @return array
+     */
+    public function getTemplates()
+    {
+        return ['search.twig', 'archive.twig', 'index.twig'];
     }
 }

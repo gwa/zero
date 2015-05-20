@@ -25,45 +25,32 @@ use TimberHelper;
  */
 final class Single extends AbstractController
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $post = $this->getContext('post');
-
-        $this->addPostToContext(true);
-        $this->addPostsToContext(false);
-
-        $this->setContext($this->singleData($post));
-
-        $this->setTemplate($this->templateToRender($post));
-    }
-
     /**
-     * Needed single data
-     *
-     * @param WP_Post $post
+     * Get context
      *
      * @return array
      */
-    protected function singleData($post)
+    public function getContext()
     {
+        $post                 = $this->getPost();
+
+        $data                 = [];
         $data['post']         = $post;
-        $data['wp_title']    .= ' - '.$post->title();
+        $data['wp_title']     = ' - '.$post->title();
         $data['comment_form'] = TimberHelper::get_comment_form();
 
         return $data;
     }
 
     /**
-     * Template to render
-     *
-     * @param WP_Post $post
+     * Get templates
      *
      * @return array
      */
-    protected function templateToRender($post)
+    public function getTemplates()
     {
+        $post = $this->getPost();
+
         if (post_password_required($post->ID)) {
             return ['single-password.twig'];
         }

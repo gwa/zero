@@ -32,19 +32,19 @@ class TwigFilter
     public function addTranslationFunctions($twig)
     {
         $twig->addFunction('_x', new Twig_SimpleFunction('_x',
-             function($text, $context, $domain = 'default') {
+             function ($text, $context, $domain = 'default') {
                  return _x($text, $context, $domain);
              }
         ));
 
         $twig->addFunction('_n', new Twig_SimpleFunction('_n',
-             function($single, $plural, $number, $domain = 'default') {
+             function ($single, $plural, $number, $domain = 'default') {
                  return _n($single, $plural, $number, $domain);
             }
         ));
 
         $twig->addFunction('_nx', new Twig_SimpleFunction('_nx',
-            function($single, $plural, $number, $context, $domain = 'default') {
+            function ($single, $plural, $number, $context, $domain = 'default') {
                 return _nx($single, $plural, $number, $context, $domain);
             }
         ));

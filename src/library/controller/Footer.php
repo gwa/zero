@@ -24,21 +24,12 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  */
 final class Footer extends AbstractController
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->setContext($this->footerData());
-
-        $this->setTemplate(['page-plugin.twig']);
-    }
-
     /**
-     * Needed footer data
+     * Get context
      *
-     * @return array<string,string>
+     * @return array
      */
-    protected function footerData()
+    public function getContext()
     {
         $data = $GLOBALS['timberContext'];
 
@@ -49,5 +40,15 @@ final class Footer extends AbstractController
         $data['content'] = ob_get_contents();
 
         return $data;
+    }
+
+    /**
+     * Get templates
+     *
+     * @return array
+     */
+    public function getTemplates()
+    {
+        return ['page-plugin.twig'];
     }
 }
