@@ -147,7 +147,7 @@ abstract class AbstractController implements PageControllerContract
     /**
      * Check if getTemplates is a array and template file exist
      *
-     * @param array $templates
+     * @param string[] $templates
      */
     protected function validateTemplates($templates)
     {

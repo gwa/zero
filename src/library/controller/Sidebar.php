@@ -11,7 +11,7 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
  * @link        http://www.greatwhiteark.com
  *
  * @license     MIT
-     */
+ */
 
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
