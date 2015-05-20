@@ -32,14 +32,14 @@ class TwigFilter
     public function addTranslationFunctions($twig)
     {
         $twig->addFunction('_x', new Twig_SimpleFunction('_x',
-             function ($text, $context, $domain = 'default') {
-                 return _x($text, $context, $domain);
-             }
+                function ($text, $context, $domain = 'default') {
+                    return _x($text, $context, $domain);
+                }
         ));
 
         $twig->addFunction('_n', new Twig_SimpleFunction('_n',
-             function ($single, $plural, $number, $domain = 'default') {
-                 return _n($single, $plural, $number, $domain);
+                function ($single, $plural, $number, $domain = 'default') {
+                    return _n($single, $plural, $number, $domain);
             }
         ));
 
