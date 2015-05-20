@@ -13,8 +13,8 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
  * @license     MIT
  */
 
-use TimberUser;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
+use TimberUser;
 
 /**
  * Author.

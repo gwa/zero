@@ -21,7 +21,7 @@ install:
   - curl http://get.sensiolabs.org/php-cs-fixer.phar -o php-cs-fixer.phar
 
 script:
-  - vendor/bin/phpunit
+  # - vendor/bin/phpunit
   - vendor/bin/php-cs-fixer --diff --dry-run -vv fix
   - phpcs --standard=ruleset.xml --extensions=php --ignore=public/wp/,vendor/ -n -s .
   - if [ $(phpenv version-name) = $OCULAR_ENV ]; then wget https://scrutinizer-ci.com/ocular.phar; php ocular.phar code-coverage:upload --format=php-clover coverage.clover; fi

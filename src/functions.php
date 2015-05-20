@@ -13,8 +13,8 @@ include_once get_template_directory().'/../vendor/autoload.php';
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Tgm\ZeroTgmSetup;
 use Gwa\Wordpress\Template\Zero\Library\Soil\RootsSoil;
+use Gwa\Wordpress\Template\Zero\Library\Tgm\ZeroTgmSetup;
 use Gwa\Wordpress\Template\Zero\Library\Theme\ThemeSettings;
 
 /**

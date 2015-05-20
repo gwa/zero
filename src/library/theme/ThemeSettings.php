@@ -13,8 +13,8 @@ namespace Gwa\Wordpress\Template\Zero\Library\Theme;
  * @license     MIT
  */
 
-use TimberSite;
 use TimberMenu;
+use TimberSite;
 
 /**
  * ThemeSettings.

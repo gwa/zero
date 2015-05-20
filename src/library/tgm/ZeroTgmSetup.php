@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwa\Wordpress\Template\Zero\Tgm;
+namespace Gwa\Wordpress\Template\Zero\Library\Tgm;
 
 /**
 *

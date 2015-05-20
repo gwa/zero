@@ -57,6 +57,6 @@ class TwigFilter
      */
     public function init()
     {
-        add_action('twig_apply_filters', array($this, 'addTranslationFunctions'));
+        add_action('twig_apply_filters', [$this, 'addTranslationFunctions']);
     }
 }

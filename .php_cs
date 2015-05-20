@@ -3,10 +3,10 @@
 $finder = Symfony\CS\Finder\DefaultFinder::create()
     ->notName('README.md')
     ->notName('composer.*')
+    ->notName('.scrutinizer.yml')
+    ->notName('.travis.yml')
+    ->notName('.php_cs')
     ->exclude('vendor')
-    ->exclude('.scrutinizer.yml')
-    ->exclude('.travis.yml')
-    ->exclude('.php_cs')
     ->exclude('tests')
     ->exclude('views')
     ->exclude('languages')
@@ -17,4 +17,16 @@ $finder = Symfony\CS\Finder\DefaultFinder::create()
 return Symfony\CS\Config\Config::create()
     // use default PSR-2_LEVEL:
     ->level(Symfony\CS\FixerInterface::PSR2_LEVEL)
+    ->fixers(
+        [
+            'ordered_use',
+            'short_array_syntax',
+            'strict',
+            'strict_param',
+            '-no_empty_lines_after_phpdocs',
+            'header_comment',
+            'newline_after_open_tag',
+            'phpdoc_order',
+        ]
+    )
     ->finder($finder);
