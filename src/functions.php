@@ -23,7 +23,6 @@ use Gwa\Wordpress\Template\Zero\Library\Theme\ThemeSettings;
  * @var ZeroTgmSetup
  */
 $tgm = new ZeroTgmSetup();
-$tgm->init();
 
 add_action('tgmpa_register', [$tgm, 'init']);
 
