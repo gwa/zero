@@ -22,7 +22,7 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  *
  * @since   0.0.1-dev
  */
-class Archive extends AbstractController
+final class Archive extends AbstractController
 {
     public function __construct()
     {
@@ -32,7 +32,7 @@ class Archive extends AbstractController
 
         $this->setContext($data['data']);
 
-        $this->setTemplate($data['templates']);
+        $this->setTemplate($thsi->templateToRender());
     }
 
     /**
@@ -40,7 +40,7 @@ class Archive extends AbstractController
      *
      * @return array
      */
-    protected function archiveData(array $templates)
+    protected function archiveData()
     {
         $data['title']     = 'Archive';
 
@@ -54,15 +54,30 @@ class Archive extends AbstractController
             $data['title'] = single_tag_title('', false);
         } elseif (is_category()) {
             $data['title'] = single_cat_title('', false);
-            array_unshift($templates, 'archive-'.get_query_var('cat').'.twig');
         } elseif (is_post_type_archive()) {
             $data['title'] = post_type_archive_title('', false);
+        }
+
+        $data['pagination'] = Timber::get_pagination();
+
+        return $data;
+    }
+
+    /**
+     * Template to render
+     *
+     * @return array
+     */
+    protected function templateToRender()
+    {
+        $templates = ['archive.twig', 'index.twig'];
+
+        if (is_category()) {
+            array_unshift($templates, 'archive-'.get_query_var('cat').'.twig');
+        } elseif (is_post_type_archive()) {
             array_unshift($templates, 'archive-'.get_post_type().'.twig');
         }
 
-        return [
-            'data'      => $data,
-            'templates' => $templates
-        ];
+        return $templates;
     }
 }

@@ -13,10 +13,10 @@ namespace Gwa\Wordpress\Template\Zero\Library;
  * @license     MIT
  */
 
+use Gwa\Wordpress\Template\Zero\Library\Timber\Post;
+use RuntimeException;
 use Timber;
 use TimberLoader;
-use RuntimeException;
-use Gwa\Wordpress\Template\Zero\Library\Timber\Post;
 
 /**
  * AbstractController.
@@ -61,7 +61,7 @@ abstract class AbstractController
      *
      * @var boolean
      */
-    protected $activePost    = true;
+    protected $activePost    = false;
 
     /**
      * Posts args
@@ -69,13 +69,6 @@ abstract class AbstractController
      * @var array
      */
     protected $postsArgs     = false;
-
-    /**
-     * Add posts to context
-     *
-     * @var boolean
-     */
-    protected $activePost    = false;
 
     /**
      * Posts args

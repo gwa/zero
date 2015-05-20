@@ -22,7 +22,7 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  *
  * @since   0.0.1-dev
  */
-class Footer extends AbstractController
+final class Footer extends AbstractController
 {
     public function __construct()
     {

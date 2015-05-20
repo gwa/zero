@@ -14,6 +14,7 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
  */
 
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
+use Timber;
 use TimberUser;
 
 /**
@@ -23,7 +24,7 @@ use TimberUser;
  *
  * @since   0.0.1-dev
  */
-class Author extends AbstractController
+final class Author extends AbstractController
 {
     public function __construct()
     {
@@ -48,6 +49,8 @@ class Author extends AbstractController
             $data['author'] = $author;
             $data['title']  = 'Author Archives: '.$author->name();
         }
+
+        $data['pagination'] = Timber::get_pagination();
 
         return $data;
     }

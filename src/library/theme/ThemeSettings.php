@@ -45,6 +45,14 @@ class ThemeSettings extends TimberSite
     }
 
     /**
+     * Load all funcs after theme setup
+     */
+    public function afterSetupTheme()
+    {
+        load_theme_textdomain('zero', get_template_directory() . '/languages');
+    }
+
+    /**
      * Register Menus
      */
     public function registerMenuLocation()
@@ -58,6 +66,102 @@ class ThemeSettings extends TimberSite
     }
 
     /**
+     * WP_HEAD GOODNESS
+     *
+     * The default WordPress head is
+     * a mess. Let's clean it up.
+     */
+    public function wpHeadCleanup()
+    {
+        // index link
+        remove_action('wp_head', 'index_rel_link');
+        // previous link
+        remove_action('wp_head', 'parent_post_rel_link', 10, 0);
+        // start link
+        remove_action('wp_head', 'start_post_rel_link', 10, 0);
+        // remove WP version from css
+        add_filter('style_loader_src', [$this, 'removeWpVerCssJs'], 9999);
+        // remove Wp version from scripts
+        add_filter('script_loader_src', [$this, 'removeWpVerCssJs'], 9999);
+    }
+
+    /**
+     * Remove WP version from RSS
+     */
+    public function removeRssVersion()
+    {
+        return '';
+    }
+
+    /**
+     * remove WP version from scripts
+     */
+    public function removeWpVerCssJs($src)
+    {
+        if (strpos($src, 'ver=')) {
+            $src = remove_query_arg('ver', $src);
+        }
+
+        return $src;
+    }
+
+    /**
+     * Clean the output of attributes of images in editor.
+     * Courtesy of SitePoint. http://www.sitepoint.com/wordpress-change-img-tag-html/
+     *
+     * @param string $class
+     * @param string $id
+     * @param string $align
+     * @param string $size
+     *
+     * @return string
+     */
+    public function imageTagClassClean($class, $id, $align, $size)
+    {
+        $align = 'align' . esc_attr($align);
+        return $align;
+    }
+
+    /**
+     * Remove width and height in editor, for a better responsive world.
+     *
+     * @param string $html
+     * @param string $id
+     * @param string $alt
+     * @param string $title
+     *
+     * @return string
+     */
+    public function imageEditorRemoveHightAndWidth($html, $id, $alt, $title)
+    {
+        return preg_replace([
+                '/\s+width="\d+"/i',
+                '/\s+height="\d+"/i',
+                '/alt=""/i'
+            ], [
+                '',
+                '',
+                '',
+                'alt="' . $title . '"'
+            ], $html);
+    }
+
+    /**
+     * Wrap images with figure tag.
+     * Courtesy of Interconnectit http://interconnectit.com/2175/how-to-remove-p-tags-from-images-in-wordpress/
+     *
+     * @param string $figure
+     *
+     * @return string
+     */
+    public function wrapImgInFigure($figure)
+    {
+        $figure = preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '<figure>$1</figure>', $figure);
+
+        return $figure;
+    }
+
+    /**
      * Init
      */
     public function init()
@@ -67,8 +171,15 @@ class ThemeSettings extends TimberSite
         add_theme_support('menus');
 
         add_action('init', [$this, 'registerMenuLocation']);
+        add_action('init', [$this, 'wpHeadCleanup']);
+        add_action('after_setup_theme', [$this, 'afterSetupTheme']);
 
         (new TwigFilter())->init();
+
+        add_filter('the_generator', [$this, 'removeRssVersion']);
+        add_filter('get_image_tag_class', [$this, 'imageTagClassClean'], 0, 4);
+        add_filter('get_image_tag', [$this, 'imageEditorRemoveHightAndWidth'], 0, 4);
+        add_filter('the_content', [$this, 'wrapImgInFigure'], 30);
 
         // Should be allways last.
         add_filter('timber_context', [$this, 'addToContext']);
@@ -90,7 +201,6 @@ class ThemeSettings extends TimberSite
             'get_post_type'        => get_post_type(),
             'is_single'            => is_single(),
             'is_post_type_archive' => is_post_type_archive(),
-            //'comments_open'        => comments_open(),
             'is_page'              => is_page(),
             'is_page_template'     => is_page_template(),
             'is_category'          => is_category(),
