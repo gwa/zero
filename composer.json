@@ -31,6 +31,9 @@
         },
         "files": ["src/library/tgm/TgmPluginActivation.php"]
     },
+    "autoload-dev": {
+        "files": ["devFunctions.php"]
+    },
     "repositories": [{
         "type"         : "package",
         "package": {
