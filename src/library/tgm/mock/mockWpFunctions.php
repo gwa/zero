@@ -27,3 +27,11 @@ if (!function_exists('get_plugins')) {
         //
     }
 }
+
+if (!function_exists('get_template_directory')) {
+    function get_template_directory()
+    {
+        //
+    }
+}
+
