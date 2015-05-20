@@ -49,7 +49,7 @@ class ThemeSettings extends TimberSite
      */
     public function afterSetupTheme()
     {
-        load_theme_textdomain('zero', get_template_directory() . '/languages');
+        load_theme_textdomain('zero', get_template_directory().'/languages');
     }
 
     /**
@@ -118,7 +118,7 @@ class ThemeSettings extends TimberSite
      */
     public function imageTagClassClean($class, $id, $align, $size)
     {
-        $align = 'align' . esc_attr($align);
+        $align = 'align'.esc_attr($align);
         return $align;
     }
 
@@ -142,7 +142,7 @@ class ThemeSettings extends TimberSite
                 '',
                 '',
                 '',
-                'alt="' . $title . '"'
+                'alt="'.$title.'"'
             ], $html);
     }
 

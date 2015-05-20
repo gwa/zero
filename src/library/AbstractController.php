@@ -27,7 +27,7 @@ use TimberLoader;
  */
 abstract class AbstractController
 {
-    protected $cacheType     = [
+    protected $cacheType = [
         'none'           => TimberLoader::CACHE_NONE,
         'object'         => TimberLoader::CACHE_OBJECT,
         'transiete'      => TimberLoader::CACHE_TRANSIENT,
@@ -40,56 +40,56 @@ abstract class AbstractController
      *
      * @var array
      */
-    protected $templates     = [];
+    protected $templates = [];
 
     /**
      * File context
      *
      * @var array
      */
-    protected $context       = [];
+    protected $context = [];
 
     /**
      * Add posts to context
      *
      * @var boolean
      */
-    protected $activePosts   = true;
+    protected $activePosts = true;
 
     /**
      * Add post to context
      *
      * @var boolean
      */
-    protected $activePost    = false;
+    protected $activePost = false;
 
     /**
      * Posts args
      *
      * @var array
      */
-    protected $postsArgs     = false;
+    protected $postsArgs = false;
 
     /**
      * Posts args
      *
      * @var array
      */
-    protected $postArgs      = [];
+    protected $postArgs = [];
 
     /**
      * Cache expires time
      *
      * @var bool|int
      */
-    protected $cacheExpires  = false;
+    protected $cacheExpires = false;
 
     /**
      * Cache mode.
      *
      * @var string
      */
-    protected $cacheMode    = TimberLoader::CACHE_USE_DEFAULT;
+    protected $cacheMode = TimberLoader::CACHE_USE_DEFAULT;
 
     /**
      * AbstractController instance.

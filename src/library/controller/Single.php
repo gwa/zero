@@ -49,7 +49,7 @@ final class Single extends AbstractController
     protected function singleData($post)
     {
         $data['post']         = $post;
-        $data['wp_title']    .= ' - ' . $post->title();
+        $data['wp_title']    .= ' - '.$post->title();
         $data['comment_form'] = TimberHelper::get_comment_form();
 
         return $data;
