@@ -1,7 +1,7 @@
 
 filter:
-    paths: ['src/Brainwave/*']
-    excluded_paths: [src/Brainwave/*/Tests/*, vendor/*]
+    paths: ['src/*']
+    excluded_paths: [*/tests/*, vendor/*, /src/library/tgm/*]
 
 checks:
     php:
@@ -105,7 +105,8 @@ tools:
             excluded_paths:
                 - 'bin/*'
                 - 'vendor/*'
-                - 'src/Brainwave/*/Tests/*'
+                - '*/tests/*'
+                - '/src/library/tgm/*'
 
     php_loc:
         enabled:                 true
@@ -116,7 +117,8 @@ tools:
             excluded_paths:
                 - bin
                 - vendor
-                - src/Brainwave/*/Tests/*
+                - */tests/*
+                - /src/library/tgm/*
 
     php_mess_detector:
         enabled:                 true
@@ -127,7 +129,8 @@ tools:
             excluded_paths:
                 - 'bin/*'
                 - 'vendor/*'
-                - 'src/Brainwave/*/Tests/*'
+                - '*/tests/*'
+                - '/src/library/tgm/*'
     php_cpd:
         enabled:                 false
 
@@ -139,7 +142,8 @@ tools:
             excluded_paths:
                 - 'bin/*'
                 - 'vendor/*'
-                - 'src/Brainwave/*/Tests/*'
+                - '*/tests/*'
+                - '/src/library/tgm/*'
 
     php_pdepend:
         enabled:                 true
@@ -149,6 +153,7 @@ tools:
         excluded_dirs:
             - bin
             - vendor
-            - src/Brainwave/*/Tests/*
+            - */tests/*
+            - /src/library/tgm/*
 
     sensiolabs_security_checker: true
