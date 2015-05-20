@@ -13,10 +13,10 @@ namespace Gwa\Wordpress\Template\Zero\Library;
  * @license     MIT
  */
 
+use Gwa\Wordpress\Template\Zero\Library\Timber\Post;
+use RuntimeException;
 use Timber;
 use TimberLoader;
-use RuntimeException;
-use Gwa\Wordpress\Template\Zero\Library\Timber\Post;
 
 /**
  * AbstractController.
@@ -27,7 +27,7 @@ use Gwa\Wordpress\Template\Zero\Library\Timber\Post;
  */
 abstract class AbstractController
 {
-    protected $cacheType     = [
+    protected $cacheType = [
         'none'           => TimberLoader::CACHE_NONE,
         'object'         => TimberLoader::CACHE_OBJECT,
         'transiete'      => TimberLoader::CACHE_TRANSIENT,
@@ -40,63 +40,56 @@ abstract class AbstractController
      *
      * @var array
      */
-    protected $templates     = [];
+    protected $templates = [];
 
     /**
      * File context
      *
      * @var array
      */
-    protected $context       = [];
+    protected $context = [];
 
     /**
      * Add posts to context
      *
      * @var boolean
      */
-    protected $activePosts   = true;
+    protected $activePosts = true;
 
     /**
      * Add post to context
      *
      * @var boolean
      */
-    protected $activePost    = true;
+    protected $activePost = false;
 
     /**
      * Posts args
      *
-     * @var array
+     * @var array|boolean
      */
-    protected $postsArgs     = false;
-
-    /**
-     * Add posts to context
-     *
-     * @var boolean
-     */
-    protected $activePost    = false;
+    protected $postsArgs = false;
 
     /**
      * Posts args
      *
-     * @var array
+     * @var array|boolean
      */
-    protected $postArgs      = [];
+    protected $postArgs = false;
 
     /**
      * Cache expires time
      *
      * @var bool|int
      */
-    protected $cacheExpires  = false;
+    protected $cacheExpires = false;
 
     /**
      * Cache mode.
      *
      * @var string
      */
-    protected $cacheMode    = TimberLoader::CACHE_USE_DEFAULT;
+    protected $cacheMode = TimberLoader::CACHE_USE_DEFAULT;
 
     /**
      * AbstractController instance.
@@ -104,7 +97,9 @@ abstract class AbstractController
     public function __construct()
     {
         if (!class_exists('Timber')) {
-            throw new RuntimeException('Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>');
+            throw new RuntimeException(
+                'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>'
+            );
         }
     }
 
@@ -112,8 +107,11 @@ abstract class AbstractController
      * Add posts to context
      *
      * @param boolean $active
+     * @param array|boolean $paramname description
+     *
+     * @return self
      */
-    public function addPostsToContext($active = true, $args = false)
+    public function addPostsToContext($active = true, array $args = false)
     {
         $this->activePosts = $active;
         $this->postsArgs   = $args;
@@ -127,11 +125,14 @@ abstract class AbstractController
      * Works the same as AbstractController::addPostsToContext but limited to one post as the return object.
      *
      * @param boolean $active
+     * @param array|boolean $paramname description
+     *
+     * @return self
      */
-    public function addPostToContext($active = true, $args = false)
+    public function addPostToContext($active = true, array $args = false)
     {
         $this->activePost = $active;
-        $this->postsArgs  = $args;
+        $this->postArgs  = $args;
 
         return $this;
     }
@@ -157,7 +158,7 @@ abstract class AbstractController
     /**
      * Get context
      *
-     * @param string $key
+     * @param false|string $key
      *
      * @return array
      */
@@ -183,7 +184,7 @@ abstract class AbstractController
     /**
      * Set template
      *
-     * @param string|array $template
+     * @param array $templates
      *
      * @return self
      */
@@ -209,7 +210,7 @@ abstract class AbstractController
     /**
     *  Render template
     *
-     * @return bool|string
+     * @return boolean|string|null
      */
     public function render()
     {
@@ -219,7 +220,7 @@ abstract class AbstractController
     /**
      * Check if file exist
      *
-     * @param  string $template
+     * @param array $templates
      *
      * @return string
      */

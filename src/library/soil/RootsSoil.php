@@ -28,7 +28,7 @@ class RootsSoil
      * @var array
      */
     protected $soilFunc = [
-        'soil-jquery-cdn'               => true,
+        'soil-jquery-cdn'               => false,
         'soil-clean-up'                 => true,
         'soil-nav-walker'               => true,
         'soil-relative-urls'            => true,
@@ -38,7 +38,7 @@ class RootsSoil
     ];
 
     protected $google = [
-        'bool' => false,
+        'boot' => false,
         'user' => '',
     ];
 
@@ -59,12 +59,12 @@ class RootsSoil
     /**
      * Add google analytics
      *
-     * @param bool   $bool
+     * @param bool   $boot
      * @param string $user
      */
-    public function addGoogleAnalytics($bool = false, $user = '')
+    public function addGoogleAnalytics($boot = false, $user = '')
     {
-        $this->google['bool'] = $bool;
+        $this->google['boot'] = $boot;
         $this->google['user'] = $user;
     }
 
@@ -81,7 +81,7 @@ class RootsSoil
 
         $google = $this->google;
 
-        if (is_bool($google['bool']) && $google['bool'] === true) {
+        if (is_bool($google['boot']) && $google['boot'] === true) {
             add_theme_support('soil-google-analytics', $google['user']);
         }
     }

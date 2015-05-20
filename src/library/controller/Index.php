@@ -22,7 +22,7 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  *
  * @since   0.0.1-dev
  */
-class Index extends AbstractController
+final class Index extends AbstractController
 {
     public function __construct()
     {
@@ -34,6 +34,6 @@ class Index extends AbstractController
             $templates = ['index.twig'];
         }
 
-         $this->setTemplate($templates)
+        $this->setTemplate($templates);
     }
 }

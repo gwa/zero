@@ -1,10 +1,27 @@
 <?php
 
-namespace Gwa\Wordpress\Template\Zero\Tgm;
+namespace Gwa\Wordpress\Template\Zero\Library\Tgm;
 
 /**
-*
-*/
+ * Zero - a PHP 5.4 Wordpress Theme.
+ *
+ * @author      Daniel Bannert <bannert@greatwhiteark.com>
+ * @copyright   2015 Great White Ark
+ *
+ * @link        http://www.greatwhiteark.com
+ *
+ * @license     MIT
+ */
+
+use TGM_Plugin_Activation;
+
+/**
+ * ZeroTgmSetup.
+ *
+ * @author  Daniel Bannert
+ *
+ * @since   0.0.1-dev
+ */
 class ZeroTgmSetup
 {
     /**
@@ -79,22 +96,6 @@ class ZeroTgmSetup
     }
 
     /**
-     * Init tgmpa class
-     *
-     * @return tgmpa
-     */
-    public function init()
-    {
-        foreach ($this->getPlugins() as $plugin) {
-            TgmPluginActivation::$instance->register($plugin);
-        }
-
-        if ($this->getConfigs()) {
-            TgmPluginActivation::$instance->config($this->getConfigs());
-        }
-    }
-
-    /**
      * Standard tgm plugins
      *
      * @return array
@@ -120,8 +121,24 @@ class ZeroTgmSetup
                 'source'             => 'https://github.com/roots/soil/archive/master.zip', // The plugin source.
                 'required'           => true, // If false, the plugin is only 'recommended' instead of required.
                 'external_url'       => 'https://roots.io/plugins/soil/', // If set, overrides default API URL and points to an external URL.
-            ]
+            ],
         ];
+
+        if (defined('WP_DEBUG') && constant('WP_DEBUG') === true) {
+            $devPlugins = [
+                [
+                    'name'               => 'Debug Bar',
+                    'slug'               => 'debug-bar',
+                    'required'           => true,
+                ],
+                [
+                    'name'               => 'Debug Bar Timber',
+                    'slug'               => 'debug-bar-timber',
+                    'required'           => true,
+                ],
+            ];
+            $plugins = array_merge($plugins, $devPlugins);
+        }
 
         return $plugins;
     }
@@ -166,5 +183,21 @@ class ZeroTgmSetup
         ];
 
         return $config;
+    }
+
+    /**
+     * Init tgmpa class
+     *
+     * @return tgmpa
+     */
+    public function init()
+    {
+        foreach ($this->getPlugins() as $plugin) {
+            TGM_Plugin_Activation::$instance->register($plugin);
+        }
+
+        if ($this->getConfigs()) {
+            TGM_Plugin_Activation::$instance->config($this->getConfigs());
+        }
     }
 }

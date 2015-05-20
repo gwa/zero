@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Library\Controller\Archive;
+use Gwa\Wordpress\Template\Zero\Library\Controller\Archive as ArchivePage;
 
-(new Archive())->render();
+(new ArchivePage())->render();

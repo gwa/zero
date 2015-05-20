@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Library\Controller\Sidebar;
+use Gwa\Wordpress\Template\Zero\Library\Controller\Sidebar as SidebarUlti;
 
-(new Sidebar())->render();
+(new SidebarUlti())->render();

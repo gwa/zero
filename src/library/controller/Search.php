@@ -22,7 +22,7 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  *
  * @since   0.0.1-dev
  */
-class Search extends AbstractController
+final class Search extends AbstractController
 {
     public function __construct()
     {

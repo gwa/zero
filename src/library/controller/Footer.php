@@ -22,7 +22,7 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  *
  * @since   0.0.1-dev
  */
-class Home extends AbstractController
+final class Footer extends AbstractController
 {
     public function __construct()
     {
@@ -36,9 +36,7 @@ class Home extends AbstractController
     /**
      * Needed footer data
      *
-     * @param WP_Post $post
-     *
-     * @return array
+     * @return array<string,string>
      */
     protected function footerData()
     {

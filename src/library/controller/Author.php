@@ -13,8 +13,9 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
  * @license     MIT
  */
 
-use TimberUser;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
+use Timber;
+use TimberUser;
 
 /**
  * Author.
@@ -23,7 +24,7 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  *
  * @since   0.0.1-dev
  */
-class Author extends AbstractController
+final class Author extends AbstractController
 {
     public function __construct()
     {
@@ -43,11 +44,15 @@ class Author extends AbstractController
     {
         global $wp_query;
 
+        $data = [];
+
         if (isset($wp_query->query_vars['author'])) {
             $author = new TimberUser($wp_query->query_vars['author']);
             $data['author'] = $author;
             $data['title']  = 'Author Archives: '.$author->name();
         }
+
+        $data['pagination'] = Timber::get_pagination();
 
         return $data;
     }

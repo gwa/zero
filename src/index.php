@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Library\Controller\Index;
+use Gwa\Wordpress\Template\Zero\Library\Controller\Index as IndexPage;
 
-(new Index())->render();
+(new IndexPage())->render();

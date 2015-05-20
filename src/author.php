@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Library\Controller\Author;
+use Gwa\Wordpress\Template\Zero\Library\Controller\Author as AuthorPage;
 
-(new Author())->render();
+(new AuthorPage())->render();

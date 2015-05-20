@@ -22,25 +22,14 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  *
  * @since   0.0.1-dev
  */
-class Page extends AbstractController
+final class Page extends AbstractController
 {
-    /**
-     * Add posts to context
-     *
-     * @var boolean
-     */
-    protected $activePosts   = false;
-
-    /**
-     * Add post to context
-     *
-     * @var boolean
-     */
-    protected $activePost    = true;
-
     public function __construct()
     {
         parent::__construct();
+
+        $this->addPostToContext(true);
+        $this->addPostsToContext(false);
 
         $this->setTemplate(['page-'.$this->getContext('post')->post_name.'.twig', 'page.twig']);
     }

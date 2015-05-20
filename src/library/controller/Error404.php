@@ -22,12 +22,10 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  *
  * @since   0.0.1-dev
  */
-class Error404 extends AbstractController
+final class Error404 extends AbstractController
 {
     public function __construct()
     {
-        parent::__construct();
-
         $this->setTemplate(['error-404.twig']);
     }
 }

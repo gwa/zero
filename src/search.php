@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Library\Controller\Search;
+use Gwa\Wordpress\Template\Zero\Library\Controller\Search as SearchPage;
 
-(new Search())->render();
+(new SearchPage())->render();

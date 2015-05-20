@@ -13,8 +13,8 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
  * @license     MIT
  */
 
-use TimberHelper;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
+use TimberHelper;
 
 /**
  * Single.
@@ -23,37 +23,20 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  *
  * @since   0.0.1-dev
  */
-class Single extends AbstractController
+final class Single extends AbstractController
 {
-    /**
-     * Add posts to context
-     *
-     * @var boolean
-     */
-    protected $activePosts   = false;
-
-    /**
-     * Add post to context
-     *
-     * @var boolean
-     */
-    protected $activePost    = true;
-
     public function __construct()
     {
         parent::__construct();
 
         $post = $this->getContext('post');
 
+        $this->addPostToContext(true);
+        $this->addPostsToContext(false);
+
         $this->setContext($this->singleData($post));
 
-        if (post_password_required($post->ID)) {
-            $template = ['single-password.twig'];
-        } else {
-            $template = ['single-'.$post->ID.'.twig', 'single-'.$post->post_type.'.twig', 'single.twig')];
-        }
-
-        $this->setTemplate($template);
+        $this->setTemplate($this->templateToRender($post));
     }
 
     /**
@@ -66,9 +49,25 @@ class Single extends AbstractController
     protected function singleData($post)
     {
         $data['post']         = $post;
-        $data['wp_title']    .= ' - ' . $post->title();
+        $data['wp_title']    .= ' - '.$post->title();
         $data['comment_form'] = TimberHelper::get_comment_form();
 
         return $data;
+    }
+
+    /**
+     * Template to render
+     *
+     * @param WP_Post $post
+     *
+     * @return array
+     */
+    protected function templateToRender($post)
+    {
+        if (post_password_required($post->ID)) {
+            return ['single-password.twig'];
+        }
+
+        return ['single-'.$post->ID.'.twig', 'single-'.$post->post_type.'.twig', 'single.twig'];
     }
 }

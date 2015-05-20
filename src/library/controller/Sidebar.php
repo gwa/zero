@@ -22,25 +22,14 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  *
  * @since   0.0.1-dev
  */
-class Sidebar extends AbstractController
+final class Sidebar extends AbstractController
 {
-    /**
-     * Add posts to context
-     *
-     * @var boolean
-     */
-    protected $activePosts   = false;
-
-    /**
-     * Add post to context
-     *
-     * @var boolean
-     */
-    protected $activePost    = false;
-
     public function __construct()
     {
         parent::__construct();
+
+        $this->addPostToContext(false);
+        $this->addPostsToContext(false);
 
         $this->setTemplate(['sidebar.twig']);
     }
