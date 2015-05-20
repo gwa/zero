@@ -41,6 +41,6 @@ final class Error404 extends AbstractController
      */
     public function getTemplates()
     {
-        $this->setTemplate(['error-404.twig']);
+        return ['error-404.twig'];
     }
 }
