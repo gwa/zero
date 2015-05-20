@@ -105,7 +105,7 @@ tools:
             excluded_paths:
                 - 'bin/*'
                 - 'vendor/*'
-                - '*/tests/*'
+                - 'tests/*'
                 - 'src/library/tgm/*'
 
     php_loc:
@@ -117,7 +117,7 @@ tools:
             excluded_paths:
                 - bin
                 - vendor
-                - */tests/*
+                - tests/*
                 - src/library/tgm/*
 
     php_mess_detector:
@@ -129,7 +129,7 @@ tools:
             excluded_paths:
                 - 'bin/*'
                 - 'vendor/*'
-                - '*/tests/*'
+                - 'tests/*'
                 - 'src/library/tgm/*'
     php_cpd:
         enabled:                 false
@@ -142,7 +142,7 @@ tools:
             excluded_paths:
                 - 'bin/*'
                 - 'vendor/*'
-                - '*/tests/*'
+                - 'tests/*'
                 - 'src/library/tgm/*'
 
     php_pdepend:
@@ -153,7 +153,7 @@ tools:
         excluded_dirs:
             - bin
             - vendor
-            - */tests/*
+            - tests/*
             - src/library/tgm/*
 
     sensiolabs_security_checker: true
