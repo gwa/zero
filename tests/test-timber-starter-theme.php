@@ -23,6 +23,10 @@ class TestTimberStarterTheme extends WP_UnitTestCase
         }
     }
 
+    /**
+     * @param string $src
+     * @param string $dst
+     */
     static function _copyDirectory($src, $dst){
         $dir = opendir($src);
         @mkdir($dst);

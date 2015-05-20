@@ -1002,7 +1002,7 @@ if (! class_exists('TGM_Plugin_Activation')) {
          *
          * @since 2.4.0
          *
-         * @return object The TGM_Plugin_Activation object.
+         * @return TGM_Plugin_Activation The TGM_Plugin_Activation object.
          */
         public static function get_instance()
         {
@@ -1946,7 +1946,7 @@ if (! function_exists('tgmpa_load_bulk_installer')) {
                      *
                      * @since 2.2.0
                      *
-                     * @return string|boolean Return plugin file on success, false on failure
+                     * @return false|string Return plugin file on success, false on failure
                      */
                     public function plugin_info()
                     {
