@@ -1,7 +1,5 @@
 <?php
 
-//Fix for travis if wp function not exist
-
 if (!function_exists('did_action')) {
     function did_action($tag)
     {
@@ -11,6 +9,20 @@ if (!function_exists('did_action')) {
 
 if (!function_exists('add_action')) {
     function add_action($hook, $function_to_add, $priority, $accepted_args)
+    {
+        //
+    }
+}
+
+if (!function_exists('plugins_api')) {
+    function plugins_api($action, $args = null)
+    {
+        //
+    }
+}
+
+if (!function_exists('get_plugins')) {
+    function get_plugins($plugin_folder = '')
     {
         //
     }
