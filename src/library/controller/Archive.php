@@ -25,9 +25,7 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 final class Archive extends AbstractController
 {
     /**
-     * Get context
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getContext()
     {
@@ -55,10 +53,8 @@ final class Archive extends AbstractController
         return $data;
     }
 
-    /**
-     * Get templates
-     *
-     * @return array
+   /**
+     * {@inheritdoc}
      */
     public function getTemplates()
     {

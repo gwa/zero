@@ -25,14 +25,14 @@ interface PageControllerContract
     /**
      * Get context
      *
-     * @return array
+     * @return array<string,\Timber|string>|null
      */
     public function getContext();
 
     /**
      * Get template
      *
-     * @return array
+     * @return string[]
      */
     public function getTemplates();
 }

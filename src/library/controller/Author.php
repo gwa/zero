@@ -27,9 +27,7 @@ use TimberUser;
 final class Author extends AbstractController
 {
     /**
-     * Get context
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getContext()
     {
@@ -50,9 +48,7 @@ final class Author extends AbstractController
     }
 
     /**
-     * Get templates
-     *
-     * @return string[]
+     * {@inheritdoc}
      */
     public function getTemplates()
     {

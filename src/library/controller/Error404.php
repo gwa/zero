@@ -25,19 +25,15 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 final class Error404 extends AbstractController
 {
     /**
-     * Get context
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getContext()
     {
         return ['posts' => $this->getPosts()];
     }
 
-    /**
-     * Get templates
-     *
-     * @return array
+   /**
+     * {@inheritdoc}
      */
     public function getTemplates()
     {

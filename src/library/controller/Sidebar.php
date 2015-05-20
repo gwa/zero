@@ -11,7 +11,7 @@ namespace Gwa\Wordpress\Template\Zero\Library\Controller;
  * @link        http://www.greatwhiteark.com
  *
  * @license     MIT
- */
+     */
 
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
@@ -25,18 +25,15 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 final class Sidebar extends AbstractController
 {
     /**
-     * Get context
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getContext()
     {
+        return [];
     }
 
     /**
-     * Get templates
-     *
-     * @return string[]
+     * {@inheritdoc}
      */
     public function getTemplates()
     {

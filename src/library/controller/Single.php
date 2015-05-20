@@ -26,9 +26,7 @@ use TimberHelper;
 final class Single extends AbstractController
 {
     /**
-     * Get context
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getContext()
     {
@@ -42,10 +40,8 @@ final class Single extends AbstractController
         return $data;
     }
 
-    /**
-     * Get templates
-     *
-     * @return array
+   /**
+     * {@inheritdoc}
      */
     public function getTemplates()
     {

@@ -79,16 +79,12 @@ abstract class AbstractController implements PageControllerContract
     }
 
     /**
-     * Get context
-     *
-     * @return array
+     * {@inheritdoc}
      */
     abstract public function getContext();
 
     /**
-     * Get template
-     *
-     * @return array
+     * {@inheritdoc}
      */
     abstract public function getTemplates();
 
