@@ -93,7 +93,7 @@ abstract class AbstractController implements PageControllerContract
      *
      * Works the same as AbstractController::addPostsToContext but limited to one post as the return object.
      *
-     * @param array|boolean $args
+     * @param null|string[] $args
      *
      * @return \Timber
      */
@@ -105,7 +105,7 @@ abstract class AbstractController implements PageControllerContract
     /**
      * Get Posts
      *
-     * @param array|boolean $args
+     * @param null|string[] $args
      *
      * @return \Timber
      */
@@ -115,8 +115,8 @@ abstract class AbstractController implements PageControllerContract
     }
 
     /**
-    *  Render template
-    *
+     *  Render template
+     *
      * @return boolean|string|null
      */
     public function render()
@@ -135,7 +135,7 @@ abstract class AbstractController implements PageControllerContract
     /**
      * Check if context is a array
      *
-     * @param array $context
+     * @param array|null $context
      */
     protected function validateContext($context)
     {

@@ -25,7 +25,7 @@ interface PageControllerContract
     /**
      * Get context
      *
-     * @return array<string,\Timber|string>|null
+     * @return array<string,\Timber|string>|null|array
      */
     public function getContext();
 
