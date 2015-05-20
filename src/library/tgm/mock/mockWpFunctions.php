@@ -34,4 +34,3 @@ if (!function_exists('get_template_directory')) {
         //
     }
 }
-
