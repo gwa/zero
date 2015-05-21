@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwa\Wordpress\Template\Zero\library\soil;
+namespace Gwa\Wordpress\Template\Zero\Library\Soil;
 
 /**
  * Zero - a PHP 5.4 Wordpress Theme.

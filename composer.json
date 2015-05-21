@@ -30,6 +30,9 @@
             "Gwa\\Wordpress\\Template\\Zero\\"          : "theme/"
         }
     },
+    "extra": {
+        "installer-name": "zero"
+    },
     "repositories": [{
         "type"         : "package",
         "package": {
