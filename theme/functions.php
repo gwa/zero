@@ -1,6 +1,8 @@
 <?php
 
-include_once get_template_directory().'/../vendor/autoload.php';
+if (file_exists($file = get_template_directory().'/../vendor/autoload.php')) {
+    include_once $file;
+}
 
 /**
  * Zero - a PHP 5.4 Wordpress Theme.
