@@ -21,9 +21,8 @@ use WP_Query;
 /**
  * Author.
  *
- * @author  Daniel Bannert
+ * @author  GWA
  *
- * @since   0.0.1-dev
  */
 final class Author extends AbstractController
 {

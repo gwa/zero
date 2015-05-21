@@ -19,9 +19,8 @@ use TimberHelper;
 /**
  * Single.
  *
- * @author  Daniel Bannert
+ * @author  GWA
  *
- * @since   0.0.1-dev
  */
 final class Single extends AbstractController
 {
