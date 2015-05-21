@@ -14,8 +14,8 @@ include_once get_template_directory().'/../vendor/autoload.php';
  */
 
 use Gwa\Wordpress\Template\Zero\Library\Soil\RootsSoil;
-use Gwa\Wordpress\Template\Zero\Library\Tgm\ZeroTgmSetup;
 use Gwa\Wordpress\Template\Zero\Library\Theme\ThemeSettings;
+use Gwa\Wordpress\Template\Zero\Library\Theme\ZeroTgmSetup;
 
 /**
  * Add needed theme plugins
@@ -25,7 +25,6 @@ use Gwa\Wordpress\Template\Zero\Library\Theme\ThemeSettings;
 $tgm = new ZeroTgmSetup();
 
 add_action('tgmpa_register', [$tgm, 'init']);
-
 
 /**
  * Check if Timber is active.

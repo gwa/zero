@@ -17,7 +17,8 @@
     ],
     "require": {
         "php"                                           : ">=5.4.0",
-        "jjgrainger/wp-custom-post-type-class"          : "~1.3.1"
+        "jjgrainger/wp-custom-post-type-class"          : "~1.3.1",
+        "tgmpa/tgm-plugin-activation"                   : "2.4.2"
     },
     "require-dev": {
         "fabpot/php-cs-fixer"                           : "~1.8",
@@ -28,8 +29,7 @@
     "autoload": {
         "psr-4": {
             "Gwa\\Wordpress\\Template\\Zero\\Library\\" : "src/library/"
-        },
-        "files": ["src/library/tgm/TgmPluginActivation.php"]
+        }
     },
     "repositories": [{
         "type"         : "package",
