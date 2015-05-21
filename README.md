@@ -1,4 +1,4 @@
-# Zero Wordpress Starter theme with using Timber
+# Zero Wordpress Starter theme using Timber
 
 ![Zero](https://github.com/gwa/zero/blob/master/zero-header.jpg)
 
