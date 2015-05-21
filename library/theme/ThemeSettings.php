@@ -19,9 +19,8 @@ use TimberSite;
 /**
  * ThemeSettings.
  *
- * @author  Daniel Bannert
+ * @author  GWA
  *
- * @since   0.0.1-dev
  */
 class ThemeSettings extends TimberSite
 {

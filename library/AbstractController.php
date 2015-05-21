@@ -23,9 +23,8 @@ use WP_Query;
 /**
  * AbstractController.
  *
- * @author  Daniel Bannert
+ * @author  GWA
  *
- * @since   0.0.1-dev
  */
 abstract class AbstractController
 {
@@ -52,6 +51,13 @@ abstract class AbstractController
     protected $cacheMode = TimberLoader::CACHE_USE_DEFAULT;
 
     /**
+     * WP_Query instance.
+     *
+     * @var \WP_Query
+     */
+    protected $wpQuery;
+
+    /**
      * AbstractController instance.
      */
     public function __construct()
@@ -64,13 +70,22 @@ abstract class AbstractController
     }
 
     /**
+     * Set Wp_Query
+     */
+    public function setWpQuery(array $args)
+    {
+        $this->wpQuery = new WP_Query($args);
+    }
+
+    /**
      * Get Wp_Query
      *
      * @return \WP_Query
      */
     public function getWpQuery()
     {
-        return new WP_Query();
+        global $wp_query;
+        return isset($this->wpQuery) ? $this->wpQuery : $wp_query;
     }
 
     /**

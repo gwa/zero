@@ -18,9 +18,8 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 /**
  * Search.
  *
- * @author  Daniel Bannert
+ * @author  GWA
  *
- * @since   0.0.1-dev
  */
 final class Search extends AbstractController
 {
