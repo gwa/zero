@@ -24,16 +24,23 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  */
 final class Home extends AbstractController
 {
-    public function __construct()
+    /**
+     * {@inheritdoc}
+     */
+    public function getContext()
     {
-        parent::__construct();
+        return ['posts' => $this->getPosts()];
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getTemplates()
+    {
         if (is_home()) {
-            $templates = ['home.twig'];
-        } else {
-            $templates = ['index.twig'];
+            return ['home.twig'];
         }
 
-        $this->setTemplate($templates);
+        return ['index.twig'];
     }
 }

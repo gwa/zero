@@ -24,38 +24,28 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  */
 final class Archive extends AbstractController
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->setContext($this->archiveData());
-
-        $this->setTemplate($this->templateToRender());
-    }
-
     /**
-     * Needed archive title
-     *
-     * @return array
+     * {@inheritdoc}
      */
-    protected function archiveData()
+    public function getContext()
     {
         $data = [];
 
-        $data['title']     = 'Archive';
+        $data['posts']      = $this->getPosts();
+        $data['title']      = 'Archive';
 
         if (is_day()) {
-            $data['title'] = 'Archive: '.get_the_date('D M Y');
+            $data['title']  = 'Archive: '.get_the_date('D M Y');
         } elseif (is_month()) {
-            $data['title'] = 'Archive: '.get_the_date('M Y');
+            $data['title']  = 'Archive: '.get_the_date('M Y');
         } elseif (is_year()) {
-            $data['title'] = 'Archive: '.get_the_date('Y');
+            $data['title']  = 'Archive: '.get_the_date('Y');
         } elseif (is_tag()) {
-            $data['title'] = single_tag_title('', false);
+            $data['title']  = single_tag_title('', false);
         } elseif (is_category()) {
-            $data['title'] = single_cat_title('', false);
+            $data['title']  = single_cat_title('', false);
         } elseif (is_post_type_archive()) {
-            $data['title'] = post_type_archive_title('', false);
+            $data['title']  = post_type_archive_title('', false);
         }
 
         $data['pagination'] = Timber::get_pagination();
@@ -64,11 +54,9 @@ final class Archive extends AbstractController
     }
 
     /**
-     * Template to render
-     *
-     * @return array
+     * {@inheritdoc}
      */
-    protected function templateToRender()
+    public function getTemplates()
     {
         $templates = ['archive.twig', 'index.twig'];
 

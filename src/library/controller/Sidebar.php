@@ -24,13 +24,19 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  */
 final class Sidebar extends AbstractController
 {
-    public function __construct()
+    /**
+     * {@inheritdoc}
+     */
+    public function getContext()
     {
-        parent::__construct();
+        return [];
+    }
 
-        $this->addPostToContext(false);
-        $this->addPostsToContext(false);
-
-        $this->setTemplate(['sidebar.twig']);
+    /**
+     * {@inheritdoc}
+     */
+    public function getTemplates()
+    {
+        return ['sidebar.twig'];
     }
 }

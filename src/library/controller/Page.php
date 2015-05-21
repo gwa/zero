@@ -24,13 +24,19 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  */
 final class Page extends AbstractController
 {
-    public function __construct()
+    /**
+     * {@inheritdoc}
+     */
+    public function getContext()
     {
-        parent::__construct();
+        return ['post' => $this->getPost()];
+    }
 
-        $this->addPostToContext(true);
-        $this->addPostsToContext(false);
-
-        $this->setTemplate(['page-'.$this->getContext('post')->post_name.'.twig', 'page.twig']);
+    /**
+     * {@inheritdoc}
+     */
+    public function getTemplates()
+    {
+        return ['page-'.$this->getPost()->post_name.'.twig', 'page.twig'];
     }
 }

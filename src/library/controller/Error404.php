@@ -24,8 +24,19 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
  */
 final class Error404 extends AbstractController
 {
-    public function __construct()
+    /**
+     * {@inheritdoc}
+     */
+    public function getContext()
     {
-        $this->setTemplate(['error-404.twig']);
+        return ['posts' => $this->getPosts()];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTemplates()
+    {
+        return ['error-404.twig'];
     }
 }

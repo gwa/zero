@@ -34,11 +34,12 @@ class ThemeSettings extends TimberSite
      */
     public function addToContext($context)
     {
+        $context = [];
+
         $context['header-menu'] = new TimberMenu('header-menu');
         $context['footer-menu'] = new TimberMenu('footer-menu');
 
         $context['site'] = $this;
-
         $context         = $this->wpConditionals();
 
         return $context;
@@ -59,8 +60,8 @@ class ThemeSettings extends TimberSite
     {
         register_nav_menus(
             [
-              'header-menu' => __('Header Menu', 'zero'),
-              'footer-menu' => __('Footer Menu', 'zero')
+                'header-menu' => __('Header Menu', 'zero'),
+                'footer-menu' => __('Footer Menu', 'zero')
             ]
         );
     }
