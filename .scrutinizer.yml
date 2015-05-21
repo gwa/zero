@@ -103,7 +103,6 @@ tools:
             level:               all
         filter:
             excluded_paths:
-                - 'bin/*'
                 - 'vendor/*'
                 - 'tests/*'
                 - 'library/timber/*'
@@ -115,7 +114,6 @@ tools:
         command:                 phploc
         filter:
             excluded_paths:
-                - bin/*
                 - vendor
                 - tests/*
                 - library/timber/*
@@ -127,7 +125,6 @@ tools:
         command:                 phpmd
         filter:
             excluded_paths:
-                - 'bin/*'
                 - 'vendor/*'
                 - 'tests/*'
                 - 'library/timber/*'
@@ -140,7 +137,6 @@ tools:
             - php
         filter:
             excluded_paths:
-                - 'bin/*'
                 - 'vendor/*'
                 - 'tests/*'
                 - 'library/timber/*'
@@ -151,7 +147,6 @@ tools:
             - php
         command:                 pdepend
         excluded_dirs:
-            - bin/*
             - vendor
             - tests/*
             - library/timber/*
