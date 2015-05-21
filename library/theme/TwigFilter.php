@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwa\Wordpress\Template\Zero\Library\Theme;
+namespace Gwa\Wordpress\Template\Zero\library\theme;
 
 /**
  * Zero - a PHP 5.4 Wordpress Theme.

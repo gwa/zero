@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwa\Wordpress\Template\Zero\Library;
+namespace Gwa\Wordpress\Template\Zero\library;
 
 /**
  * Zero - a PHP 5.4 Wordpress Theme.
@@ -18,6 +18,7 @@ use LogicException;
 use RuntimeException;
 use Timber;
 use TimberLoader;
+use WP_Query;
 
 /**
  * AbstractController.
@@ -93,7 +94,7 @@ abstract class AbstractController
      */
     public function getCacheMode()
     {
-        return $this->cacheMode;
+        return $this->cacheType[$this->cacheMode];
     }
 
     /**
@@ -105,7 +106,7 @@ abstract class AbstractController
      *
      * @return self
      */
-    public function setCacheExpiresSecond(int $second)
+    public function setCacheExpiresSecond($second)
     {
         $this->cacheExpiresSecond = $second;
 
@@ -123,12 +124,16 @@ abstract class AbstractController
     }
 
     /**
-     * {@inheritdoc}
+     * Get context
+     *
+     * @return array<string,\Timber|string>|null|array
      */
     abstract public function getContext();
 
     /**
-     * {@inheritdoc}
+     * Get template
+     *
+     * @return string[]
      */
     abstract public function getTemplates();
 

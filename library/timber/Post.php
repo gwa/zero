@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwa\Wordpress\Template\Zero\Library\Timber;
+namespace Gwa\Wordpress\Template\Zero\library\timber;
 
 /**
  * Zero - a PHP 5.4 Wordpress Theme.
