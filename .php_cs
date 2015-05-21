@@ -15,7 +15,6 @@ $finder = Symfony\CS\Finder\DefaultFinder::create()
     ->exclude('languages')
     ->exclude('assets')
     ->exclude('tasks')
-    ->exclude('tgm')
     ->in(__DIR__);
 
 return Symfony\CS\Config\Config::create()
@@ -23,6 +22,7 @@ return Symfony\CS\Config\Config::create()
     ->level(Symfony\CS\FixerInterface::PSR2_LEVEL)
     ->fixers(
         [
+            '-psr0',
             'ordered_use',
             'short_array_syntax',
             'strict',

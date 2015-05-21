@@ -1,7 +1,7 @@
 
 filter:
     paths: ['src/*']
-    excluded_paths: [tests/*, vendor/*, src/library/tgm/*, src/library/timber/*]
+    excluded_paths: [tests/*, vendor/*, library/timber/*]
 
 checks:
     php:
@@ -103,11 +103,9 @@ tools:
             level:               all
         filter:
             excluded_paths:
-                - 'bin/*'
                 - 'vendor/*'
                 - 'tests/*'
-                - 'src/library/tgm/*'
-                - 'src/library/timber/*'
+                - 'library/timber/*'
 
     php_loc:
         enabled:                 true
@@ -116,11 +114,9 @@ tools:
         command:                 phploc
         filter:
             excluded_paths:
-                - bin
                 - vendor
                 - tests/*
-                - src/library/tgm/*
-                - src/library/timber/*
+                - library/timber/*
 
     php_mess_detector:
         enabled:                 true
@@ -129,11 +125,9 @@ tools:
         command:                 phpmd
         filter:
             excluded_paths:
-                - 'bin/*'
                 - 'vendor/*'
                 - 'tests/*'
-                - 'src/library/tgm/*'
-                - 'src/library/timber/*'
+                - 'library/timber/*'
     php_cpd:
         enabled:                 false
 
@@ -143,11 +137,9 @@ tools:
             - php
         filter:
             excluded_paths:
-                - 'bin/*'
                 - 'vendor/*'
                 - 'tests/*'
-                - 'src/library/tgm/*'
-                - 'src/library/timber/*'
+                - 'library/timber/*'
 
     php_pdepend:
         enabled:                 true
@@ -155,10 +147,8 @@ tools:
             - php
         command:                 pdepend
         excluded_dirs:
-            - bin
             - vendor
             - tests/*
-            - src/library/tgm/*
-            - src/library/timber/*
+            - library/timber/*
 
     sensiolabs_security_checker: true
