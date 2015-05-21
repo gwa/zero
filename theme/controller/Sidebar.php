@@ -18,9 +18,8 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 /**
  * Sidebar.
  *
- * @author  Daniel Bannert
+ * @author  GWA
  *
- * @since   0.0.1-dev
  */
 final class Sidebar extends AbstractController
 {

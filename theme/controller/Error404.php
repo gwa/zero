@@ -18,9 +18,8 @@ use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 /**
  * Error404.
  *
- * @author  Daniel Bannert
+ * @author  GWA
  *
- * @since   0.0.1-dev
  */
 final class Error404 extends AbstractController
 {

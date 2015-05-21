@@ -18,9 +18,8 @@ use TimberPost;
 /**
  * Post.
  *
- * @author  Daniel Bannert
+ * @author  GWA
  *
- * @since   0.0.1-dev
  */
 class Post extends TimberPost
 {
