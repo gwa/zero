@@ -35,8 +35,8 @@ class ThemeSettings extends TimberSite
     {
         $context = [];
 
-        $context['header-menu'] = new TimberMenu('header-menu');
-        $context['footer-menu'] = new TimberMenu('footer-menu');
+        $context['header_menu'] = new TimberMenu('header-menu');
+        $context['footer_menu'] = new TimberMenu('footer-menu');
 
         $context['site'] = $this;
         $context         = array_merge($context, $this->wpConditionals());
