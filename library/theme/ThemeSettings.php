@@ -27,11 +27,11 @@ class ThemeSettings extends TimberSite
     /**
      * Add to context
      *
-     * @param array
+     * @param array $data
      *
      * @return array
      */
-    public function addToContext($context)
+    public function addToContext($data)
     {
         $context = [];
 
@@ -39,9 +39,8 @@ class ThemeSettings extends TimberSite
         $context['footer_menu'] = new TimberMenu('footer-menu');
 
         $context['site'] = $this;
-        $context         = array_merge($context, $this->wpConditionals());
 
-        return $context;
+        return array_merge($context, $data, $this->wpConditionals());
     }
 
     /**
