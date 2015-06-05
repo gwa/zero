@@ -12,8 +12,7 @@ Make sure to fork! If you do, you get a cookie.
 
 * php 5.4
 * [Composer](https://getcomposer.org/)
-* [Timber Library](http://upstatement.com/timber/)
-* (Optional) [Soil](https://github.com/roots/soil)
+* [Zero Library](https://github.com/gwa/zero-library)
 
 ## Installation
 
@@ -22,7 +21,7 @@ To get the latest version of Zero theme, simply add the following line to the re
 ~~~json
 {
     "require": {
-        "gwa/zero" : "~1.0.0"
+        "gwa/zero" : "~2.0.0"
     }
 }
 ~~~
