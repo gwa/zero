@@ -29,7 +29,10 @@
         }
     },
     "extra": {
-        "installer-name": "zero"
+        "installer-name": "zero",
+        "branch-alias": {
+            "dev-master"                     : "2.0.0-dev"
+        }
     },
     "repositories": [{
         "type": "composer",
