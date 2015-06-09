@@ -47,7 +47,7 @@ final class Archive extends AbstractController
             $data['title']  = post_type_archive_title('', false);
         }
 
-        $data['pagination'] = Timber::get_pagination();
+        $data['pagination'] = \Timber::get_pagination();
 
         return $data;
     }
