@@ -36,14 +36,10 @@ if (!class_exists('Timber')) {
  * @link https://github.com/roots/soil
  */
 if (class_exists('Roots\Soil\Options')) {
-    $soil = new RootsSoil();
-
-    $soil->init();
+    (new RootsSoil())->init();
 }
 
 /**
  * Adds all global needed theme settings
  */
-$theme = new ThemeSettings();
-
-$theme->init();
+(new ThemeSettings())->init();
