@@ -17,7 +17,6 @@ if (file_exists($file = get_template_directory().'/../vendor/autoload.php')) {
 
 use Gwa\Wordpress\Template\Zero\Library\Soil\RootsSoil;
 use Gwa\Wordpress\Template\Zero\Library\Theme\ThemeSettings;
-use Gwa\Wordpress\Template\Zero\Library\Theme\ZeroTgmSetup;
 
 /**
  * Check if Timber is active.
