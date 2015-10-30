@@ -1,5 +1,4 @@
 <?php
-
 namespace Gwa\Wordpress\Template\Zero\Controller;
 
 /**
@@ -38,7 +37,7 @@ final class Author extends AbstractController
         if (isset($wpQuery->query_vars['author'])) {
             $author = new TimberUser($wpQuery->query_vars['author']);
             $data['author'] = $author;
-            $data['title']  = 'Author Archives: '.$author->name();
+            $data['title']  = $author->name();
         }
 
         $data['pagination'] = Timber::get_pagination();
@@ -52,6 +51,6 @@ final class Author extends AbstractController
      */
     public function getTemplates()
     {
-        return ['author.twig', 'archive.twig'];
+        return ['author.twig'];
     }
 }

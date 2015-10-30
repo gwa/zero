@@ -16,22 +16,22 @@
         }
     ],
     "require": {
-        "php"                                           : ">=5.4.0",
-        "gwa/zero-library"                              : "~3.0.1"
+        "php"                                 : ">=5.4.0",
+        "gwa/zero-library"                    : "~3.1.0"
     },
     "require-dev": {
-        "fabpot/php-cs-fixer"                           : "~1.9",
-        "phpunit/phpunit"                               : "~4.7"
+        "fabpot/php-cs-fixer"                 : "~1.10",
+        "phpunit/phpunit"                     : "~4.7"
     },
     "autoload": {
         "psr-4": {
-            "Gwa\\Wordpress\\Template\\Zero\\"          : "theme/"
+            "Gwa\\Wordpress\\Template\\Zero\\": "theme/"
         }
     },
     "extra": {
         "installer-name": "zero",
         "branch-alias": {
-            "dev-master"                                : "3.0.0-dev"
+            "dev-master"                      : "3.1.0-dev"
         }
     },
     "repositories": [{

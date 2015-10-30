@@ -1,5 +1,4 @@
 <?php
-
 namespace Gwa\Wordpress\Template\Zero\Controller;
 
 /**
@@ -36,10 +35,6 @@ final class Index extends AbstractController
      */
     public function getTemplates()
     {
-        if (is_home()) {
-            return ['home.twig'];
-        }
-
         return ['index.twig'];
     }
 }

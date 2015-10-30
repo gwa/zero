@@ -1,5 +1,4 @@
 <?php
-
 namespace Gwa\Wordpress\Template\Zero\Controller;
 
 /**
@@ -28,17 +27,17 @@ final class Archive extends AbstractController
      */
     public function getContext()
     {
-        $data = [];
+        $data               = [];
 
         $data['posts']      = $this->getPosts();
-        $data['title']      = 'Archive';
+        $data['title']      = __('Archive', 'zero');
 
         if (is_day()) {
-            $data['title']  = 'Archive: '.get_the_date('D M Y');
+            $data['title']  = __('Archive: ', 'zero').get_the_date('D M Y');
         } elseif (is_month()) {
-            $data['title']  = 'Archive: '.get_the_date('M Y');
+            $data['title']  = __('Archive: ', 'zero').get_the_date('M Y');
         } elseif (is_year()) {
-            $data['title']  = 'Archive: '.get_the_date('Y');
+            $data['title']  = __('Archive: ', 'zero').get_the_date('Y');
         } elseif (is_tag()) {
             $data['title']  = single_tag_title('', false);
         } elseif (is_category()) {
@@ -57,7 +56,7 @@ final class Archive extends AbstractController
      */
     public function getTemplates()
     {
-        $templates = ['archive.twig', 'index.twig'];
+        $templates = ['archive.twig'];
 
         if (is_category()) {
             array_unshift($templates, 'archive-'.get_query_var('cat').'.twig');

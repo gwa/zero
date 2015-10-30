@@ -1,5 +1,4 @@
 <?php
-
 namespace Gwa\Wordpress\Template\Zero\Controller;
 
 /**

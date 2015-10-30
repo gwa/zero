@@ -15,9 +15,9 @@ if (file_exists($file = get_template_directory().'/../vendor/autoload.php')) {
  * @license     MIT
  */
 
+use Gwa\Wordpress\MockeryWpBridge\WpBridge;
 use Gwa\Wordpress\Template\Zero\Library\Soil\RootsSoil;
-use Gwa\Wordpress\Template\Zero\Library\Theme\ThemeSettings;
-use Gwa\Wordpress\Template\Zero\Library\Theme\ZeroTgmSetup;
+use Gwa\Wordpress\Template\Zero\Settings\ThemeSettings as ZeroThemeSettings;
 
 /**
  * Check if Timber is active.
@@ -31,19 +31,21 @@ if (!class_exists('Timber')) {
 }
 
 /**
- * Adds roots soil support to zero
+ * Adds roots soil support to zero.
  *
  * @link https://github.com/roots/soil
  */
 if (class_exists('Roots\Soil\Options')) {
-    $soil = new RootsSoil();
-
-    $soil->init();
+    (new RootsSoil())->init();
 }
 
 /**
- * Adds all global needed theme settings
+ * Init wp bridge.
  */
-$theme = new ThemeSettings();
+$bridge = new WpBridge();
 
-$theme->init();
+/**
+ * Adds all global needed theme settings.
+ */
+
+(new ZeroThemeSettings())->setWpBridge($bridge)->run();

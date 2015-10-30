@@ -15,12 +15,12 @@ namespace Gwa\Wordpress\Template\Zero\Controller;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
 /**
- * Error404.
+ * ContentQuote.
  *
  * @author  GWA
  *
  */
-final class Error404 extends AbstractController
+final class ContentQuote extends AbstractController
 {
     /**
      * {@inheritdoc}
@@ -35,6 +35,6 @@ final class Error404 extends AbstractController
      */
     public function getTemplates()
     {
-        return ['error-404.twig'];
+        return ['content-quote.twig'];
     }
 }

@@ -27,7 +27,6 @@ return Symfony\CS\Config\Config::create()
             'short_array_syntax',
             'strict',
             'strict_param',
-            'header_comment',
             'phpdoc_order',
         ]
     )
