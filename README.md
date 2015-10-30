@@ -11,22 +11,26 @@ Make sure to fork! If you do, you get a cookie.
 ## Requirements
 
 * php 5.4
+* [nodejs](https://nodejs.org/en/)
+* [grunt](http://gruntjs.com/)
 * [Composer](https://getcomposer.org/)
 * [Zero Library](https://github.com/gwa/zero-library)
 
 ## Installation
 
-To get the latest version of Zero theme, simply add the following line to the require block of your `composer.json` file:
+To get the latest version of Zero theme, simply [download zero](https://github.com/gwa/zero/archive/3.0.zip), unzip it to your wordpress theme folder and add the following line to the require block of your `composer.json` file:
 
 ~~~json
 {
     "require": {
-        "gwa/zero" : "~2.0.0"
+        "gwa/zero-library" : "~3.3.0"
     }
 }
 ~~~
 
-You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated and `npm install` to start working with Grunt.
+
+If you make some changes on gettext `__() or {{ __() }}` funtions, you need to run grunt in your console.
 
 ## License
 Zero theme is licensed under [The MIT License (MIT)](https://github.com/gwa/zero/blob/master/LICENSE).
