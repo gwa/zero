@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Controller\ContentImage as ContentImagePage;
+use Gwa\Wordpress\Template\Zero\Controller\Attachment as AttachmentPage;
 
-(new ContentImagePage())->render();
+(new AttachmentPage())->render();

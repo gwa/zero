@@ -27,7 +27,7 @@ class ThemeSettings extends LibraryThemeSettings
      *
      * @return array
      */
-    public function addToContext($data)
+    public function addToContext($data = [])
     {
         $context = [
         ];

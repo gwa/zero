@@ -15,12 +15,12 @@ namespace Gwa\Wordpress\Template\Zero\Controller;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
 /**
- * ContentAside.
+ * Taxonomy.
  *
  * @author  GWA
  *
  */
-final class ContentAside extends AbstractController
+final class Taxonomy extends AbstractController
 {
     /**
      * {@inheritdoc}
@@ -35,6 +35,6 @@ final class ContentAside extends AbstractController
      */
     public function getTemplates()
     {
-        return ['content-aside.twig'];
+        return ['taxonomy.twig'];
     }
 }

@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Controller\ContentStatus as ContentStatusPage;
+use Gwa\Wordpress\Template\Zero\Controller\Taxonomy as TaxonomyPage;
 
-(new ContentStatusPage())->render();
+(new TaxonomyPage())->render();

@@ -11,6 +11,6 @@
  * @license     MIT
  */
 
-use Gwa\Wordpress\Template\Zero\Controller\ContentQuote as ContentQuotePage;
+use Gwa\Wordpress\Template\Zero\Controller\FrontPage as FrontPagePage;
 
-(new ContentQuotePage())->render();
+(new FrontPagePage())->render();

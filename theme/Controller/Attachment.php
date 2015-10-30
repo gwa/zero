@@ -15,12 +15,12 @@ namespace Gwa\Wordpress\Template\Zero\Controller;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
 /**
- * ContentImage.
+ * Attachment.
  *
  * @author  GWA
  *
  */
-final class ContentImage extends AbstractController
+final class Attachment extends AbstractController
 {
     /**
      * {@inheritdoc}
@@ -35,6 +35,6 @@ final class ContentImage extends AbstractController
      */
     public function getTemplates()
     {
-        return ['content-image.twig'];
+        return ['attachment.twig'];
     }
 }

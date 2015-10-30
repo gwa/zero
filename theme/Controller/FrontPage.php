@@ -15,12 +15,12 @@ namespace Gwa\Wordpress\Template\Zero\Controller;
 use Gwa\Wordpress\Template\Zero\Library\AbstractController;
 
 /**
- * ContentLink.
+ * FrontPage.
  *
  * @author  GWA
  *
  */
-final class ContentLink extends AbstractController
+final class FrontPage extends AbstractController
 {
     /**
      * {@inheritdoc}
@@ -35,6 +35,6 @@ final class ContentLink extends AbstractController
      */
     public function getTemplates()
     {
-        return ['content-link.twig'];
+        return ['front-page.twig'];
     }
 }
