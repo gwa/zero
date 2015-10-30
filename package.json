@@ -1,0 +1,40 @@
+{
+  "name": "gwa-zero",
+  "version": "3.0.0",
+  "description": "WordPress Starter Theme with Twig for use as a starting template for building custom themes.",
+  "author": {
+    "name": "Great White Ark",
+    "email": "bannert@greatwhiteark.com"
+  },
+  "homepage": ":author_website",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gwa/zero.git"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "bugs": {
+    "url": "https://github.com/gwa/zero/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "load-grunt-config": "^0.17.2",
+    "load-grunt-tasks": "^3.2.0",
+    "time-grunt": "^1.2.1",
+    "grunt-gettext-parser": "^0.1.0",
+    "grunt-pot": "^0.2.1"
+  },
+  "keywords": [
+    "grunt",
+    "development",
+    "dev",
+    "tool"
+  ]
+}
