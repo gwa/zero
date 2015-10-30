@@ -6,7 +6,7 @@
             <section class="article-content">
                 <h1 class="article-h1">{{post.title}}</h1>
                 <p class="blog-author">
-                    <span>{{ __('By:', 'zero') }}</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.post_date|date}}
+                    <span>{{ __("By:", "zero") }}</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.post_date|date}}
                 </p>
                 <div class="article-body">
                     {{post.content}}
@@ -14,7 +14,7 @@
             </section>
             <section class="comments">
                 <div class="respond">
-                    <h3 class="h2">{{ __('Comments:', 'zero') }}</h3>
+                    <h3 class="h2">{{ __("Comments:", "zero") }}</h3>
                     {{ comment_form }}
                 </div>
                 <div class="responses">

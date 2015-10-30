@@ -1,6 +1,6 @@
 {% block html_head_container %}
 
-{% include 'base/html-header.twig' %}
+{% include "base/html-header.twig" %}
     {% block head %}
     {% endblock %}
     </head>
@@ -12,7 +12,7 @@
                 <h1>
                     <a href="{{ site.url }}" rel="home">{{ site.name }}</a>
                 </h1>
-                {% include 'base/nav.twig' %}
+                {% include "base/nav.twig" %}
             {% endblock %}
         </header>
 
@@ -35,10 +35,10 @@
 
         {% block footer %}
             <footer class="footer" role="contentinfo">
-                {% include 'base/footer.twig' %}
+                {% include "base/footer.twig" %}
             </footer>
 
-            {{ function('wp_footer') }}
+            {{ function("wp_footer") }}
         {% endblock %}
     </body>
 </html>

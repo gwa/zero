@@ -1,7 +1,7 @@
 <nav class="nav-main" role="navigation">
     <ul>
     {% for item in header_menu.get_items %}
-        <li class="nav-item {{ item.classes | join(' ') }}">
+        <li class="nav-item {{ item.classes | join(" ") }}">
             <a class="nav-link" href="{{ item.get_link }}">{{ item.title }}</a>
             {% if item.get_children %}
                 <ul class="nav nav-drop">
