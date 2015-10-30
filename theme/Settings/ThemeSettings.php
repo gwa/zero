@@ -13,7 +13,6 @@ namespace Gwa\Wordpress\Template\Zero\Settings;
  */
 
 use Gwa\Wordpress\Template\Zero\Library\Theme\ThemeSettings as LibraryThemeSettings;
-use Gwa\Wordpress\MockeryWpBridge\Traits\WpBridgeTrait;
 
 /**
  * Zero theme settings class.
