@@ -1,7 +1,7 @@
 
 filter:
-    paths: ['src/*']
-    excluded_paths: [tests/*, vendor/*, library/timber/*]
+    paths: ['theme/*']
+    excluded_paths: [tests/*, vendor/*]
 
 checks:
     php:
@@ -104,7 +104,6 @@ tools:
             excluded_paths:
                 - 'vendor/*'
                 - 'tests/*'
-                - 'library/timber/*'
 
     php_loc:
         enabled:                 true
@@ -126,7 +125,6 @@ tools:
             excluded_paths:
                 - 'vendor/*'
                 - 'tests/*'
-                - 'library/timber/*'
     php_cpd:
         enabled:                 false
 
@@ -138,7 +136,6 @@ tools:
             excluded_paths:
                 - 'vendor/*'
                 - 'tests/*'
-                - 'library/timber/*'
 
     php_pdepend:
         enabled:                 true
@@ -148,6 +145,5 @@ tools:
         excluded_dirs:
             - vendor
             - tests/*
-            - library/timber/*
 
     sensiolabs_security_checker: true
